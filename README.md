@@ -53,15 +53,16 @@ the honesty section below before drawing any other conclusion.
   itself, which it cannot do today.
 - **The information-flow guarantee has known boundaries.** It tracks
   direct flows (values, parameters, interpolation, derived values,
-  function results) and now aggregate literals: a `@secret` placed in a
-  struct field, list, or tuple makes the whole aggregate `@secret`, so
-  reading it back and sinking it *within the same function* is caught
-  (whole-aggregate granularity; per-field precision is a later
-  refinement). What it does NOT do: (a) cross a function boundary
-  implicitly, by design, a parameter that should carry a secret must be
-  annotated `@secret` (explicit flow); and (b) track secrets through
-  mutable containers built with `new_map()` / `new_set()` and `set()` /
-  `add()`. Closing those is on the Capa roadmap (S2 follow-ups).
+  function results), aggregate literals (a `@secret` in a struct field,
+  list, or tuple makes the whole aggregate `@secret`), and mutable
+  containers (a secret `push`ed / `add`ed / `set` into a `List` / `Set` /
+  `Map` taints the container, so a later read does not launder it). All
+  of that is *intra-procedural*. What it does NOT do: (a) cross a
+  function boundary implicitly, by design, a parameter that should carry
+  a secret must be annotated `@secret` (explicit flow); and (b) offer
+  per-field precision, the granularity is whole-aggregate / whole-
+  container (a secret field taints the whole struct). Those are on the
+  Capa roadmap (S2 follow-ups).
 - **No real persistence, concurrency, or atomicity.** Idempotency is an
   in-memory set; the audit log is a read-modify-write file. Real
   transactional integrity, resilience, and scale are out of scope.

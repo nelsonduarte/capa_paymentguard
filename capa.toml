@@ -1,0 +1,11 @@
+# capa_paymentguard - package manifest.
+#
+# A showcase of Capa's capability discipline + information-flow
+# control on a payment-transaction security core. Standalone: built
+# on the standard library only, so `capa --check main.capa` runs with
+# no `capa install` step.
+
+[package]
+name = "capa_paymentguard"
+version = "0.1.0"
+capa = ">=1.0.0-rc5"

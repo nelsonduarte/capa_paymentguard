@@ -1,0 +1,81 @@
+// auth.capa
+//
+// Strong Customer Authentication (PSD2 / SCA) and credential
+// verification. Pure: no capabilities. The secret material backing
+// each factor (PIN, OTP) stays @secret and is only ever compared,
+// never echoed or returned.
+
+import domain
+import crypto_stub
+
+// =========================================================
+// Credential verification
+// =========================================================
+//
+// The provided secret is hashed and compared against the stored
+// salted hash. The plaintext never leaves the secret domain; only
+// the boolean match result flows out.
+
+pub fun verify_knowledge(provided_pin: @secret String, stored_hash: String, salt: String) -> Bool
+    let computed = crypto_stub.slow_hash(provided_pin, salt)
+    return computed == stored_hash
+
+pub fun verify_possession(provided_otp: @secret String, expected_otp: @secret String) -> Bool
+    // constant-time comparison so a timing side channel cannot leak
+    // how many leading characters matched (CWE-208).
+    return crypto_stub.constant_time_eq(provided_otp, expected_otp)
+
+// =========================================================
+// SCA: at least two independent factor classes
+// =========================================================
+
+pub fun sca_factor_count(knowledge_ok: Bool, possession_ok: Bool, inherence_ok: Bool) -> Int
+    var n = 0
+    if knowledge_ok
+        n = n + 1
+    if possession_ok
+        n = n + 1
+    if inherence_ok
+        n = n + 1
+    return n
+
+pub fun sca_satisfied(knowledge_ok: Bool, possession_ok: Bool, inherence_ok: Bool) -> Bool
+    return sca_factor_count(knowledge_ok, possession_ok, inherence_ok) >= 2
+
+// =========================================================
+// Account lockout
+// =========================================================
+
+pub fun should_lock_account(consecutive_failures: Int, max_attempts: Int) -> Bool
+    return consecutive_failures >= max_attempts
+
+// =========================================================
+// SCA exemptions (PSD2 Art. 13 / 16)
+// =========================================================
+//
+// Configurable, justifiable exemptions to strong authentication.
+// Every exemption carries a reason so the decision is auditable.
+
+pub type ScaExemption =
+    NoExemption
+    LowValue
+    TrustedBeneficiary
+
+pub fun evaluate_exemption(tx: Transaction, low_value_threshold_cents: Int, is_trusted: Bool) -> ScaExemption
+    if is_trusted
+        return TrustedBeneficiary
+    if tx.amount_cents < low_value_threshold_cents
+        return LowValue
+    return NoExemption
+
+pub fun requires_sca(ex: ScaExemption) -> Bool
+    return match ex
+        NoExemption        -> true
+        LowValue           -> false
+        TrustedBeneficiary -> false
+
+pub fun exemption_reason(ex: ScaExemption) -> String
+    return match ex
+        NoExemption        -> "none (full SCA required)"
+        LowValue           -> "PSD2 Art.16 low-value payment exemption"
+        TrustedBeneficiary -> "PSD2 Art.13 trusted beneficiary exemption"

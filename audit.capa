@@ -1,0 +1,57 @@
+// audit.capa
+//
+// Tamper-evident, append-only audit logging. Two security properties
+// are enforced here, by two different mechanisms:
+//
+//  1. INTEGRITY (tamper-evidence): each log line carries a chain hash
+//     over the previous line, so editing or deleting any earlier
+//     entry breaks every chain value after it.
+//
+//  2. CONFIDENTIALITY (no secrets in the clear): an ``AuditEvent``
+//     carries only public fields. Because the log is written through
+//     ``Fs.write``, a @secret value reaching the log content is an
+//     information-flow violation the compiler reports. The ONLY way
+//     to put cardholder data in a log line is to mask it first (see
+//     mask.capa), which is exactly OWASP's logging guidance.
+//
+// Capabilities: this module declares ``Fs`` and nothing else. The
+// SBOM proves it cannot reach the network.
+
+import domain
+import crypto_stub
+
+pub type AuditEvent {
+    timestamp_secs: Float,
+    actor: String,
+    action: String,
+    source: String,         // where the request came from (IP, channel)
+    detail: String          // MUST already be masked / public
+}
+
+// One chained log line: the body plus a hash that covers the
+// previous chain value, so the lines form a verifiable sequence.
+pub fun format_line(prev_chain: String, e: AuditEvent) -> String
+    let body = "${e.timestamp_secs}|${e.actor}|${e.action}|${e.source}|${e.detail}"
+    let chain = crypto_stub.hmac("${prev_chain}|${body}", "audit-chain-key")
+    return "${body}|chain=${chain}"
+
+// Build the full chained log. ``prev`` threads each line's chain hash
+// into the next, anchoring the sequence to a fixed genesis value.
+pub fun build_log(events: List<AuditEvent>) -> List<String>
+    var lines: List<String> = []
+    var prev = "GENESIS"
+    for e in events
+        let line = format_line(prev, e)
+        lines.push(line)
+        prev = crypto_stub.hmac(line, "audit-chain-key")
+    return lines
+
+// Persist the log. The content is public by construction (every
+// AuditEvent field is public); if any secret reached it, this
+// ``Fs.write`` would be an information-flow violation.
+pub fun write_log(fs: Fs, path: String, events: List<AuditEvent>) -> Result<Unit, IoError>
+    let lines = build_log(events)
+    var content = ""
+    for ln in lines
+        content = "${content}${ln}\n"
+    return fs.write(path, content)

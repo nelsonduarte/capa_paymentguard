@@ -1,0 +1,56 @@
+// mask.capa
+//
+// The audited secret -> public bridges. THIS IS THE ONLY MODULE that
+// is allowed to declassify cardholder data, and every bridge states a
+// regulatory reason. Those reasons are emitted into the SBOM as
+// ``declassification_sites``: a machine-checkable record of exactly
+// where, and why, the program discloses sensitive data.
+//
+// Everywhere else in the codebase a @secret value that reaches a
+// public sink (a log line, a network call) is a compile-time
+// information-flow violation. Routing it through one of these
+// functions is the single, reviewable way to make the disclosure
+// intentional and recorded.
+
+import crypto_stub
+
+// Display form of a PAN: the last four digits only, the rest masked.
+// PCI DSS 3.4 permits displaying at most the first six / last four.
+pub fun mask_pan(pan: @secret String) -> String
+    let n = pan.length()
+    if n < 4
+        // Nothing derived from the secret crosses here: the constant
+        // is already public, so no declassify is needed (and the
+        // analyzer would flag one as a no-op).
+        return "****"
+    let last4 = pan.substring(n - 4, n)
+    return declassify(
+        "**** **** **** ${last4}",
+        reason: "PCI DSS 3.4: display only the last four PAN digits"
+    )
+
+// Correlation-resistant fingerprint of a PAN for matching against
+// block / watch lists without storing or exposing the PAN. PCI DSS
+// allows comparison via keyed hashing with managed keys.
+pub fun pan_fingerprint(pan: @secret String, key: String) -> String
+    return declassify(
+        hmac(pan, key),
+        reason: "PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible"
+    )
+
+// The at-rest storable form of a credential: the salted slow-hash,
+// declassified for persistence. The plaintext credential never
+// leaves the secret domain.
+pub fun storable_credential(secret: @secret String, salt: String) -> String
+    return declassify(
+        crypto_stub.slow_hash(secret, salt),
+        reason: "credential stored only as a salted slow-hash, never in clear"
+    )
+
+// The at-rest storable form of cardholder data: encrypted, then
+// declassified for persistence behind the KMS boundary.
+pub fun storable_ciphertext(pan: @secret String, data_key: String) -> String
+    return declassify(
+        crypto_stub.encrypt(pan, data_key),
+        reason: "PCI DSS 3.4: PAN stored only as AES ciphertext under a KMS data key"
+    )

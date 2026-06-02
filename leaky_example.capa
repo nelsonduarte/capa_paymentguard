@@ -1,0 +1,34 @@
+// leaky_example.capa
+//
+// COUNTER-EXAMPLE. This file deliberately does the wrong thing, so you
+// can watch the information-flow checker fire. It is NOT part of the
+// system and is never imported by main.capa.
+//
+// Try it:
+//     capa --check leaky_example.capa
+//
+// You will see a warning that a @secret PAN reaches a public sink for
+// ``leak_to_console`` (default tier), and a hard ERROR for
+// ``leak_to_console_strict`` (which opted into @strict_ifc).
+//
+// The fix in every case is to route the value through mask.capa, which
+// declassifies it with a recorded reason (see mask.mask_pan).
+
+import domain
+
+// WRONG (warning): the raw PAN flows straight into a console sink.
+// card is a @secret binding, so card.pan is @secret, the interpolated
+// string is @secret, and Stdio.println is a public sink.
+fun leak_to_console(stdio: Stdio, card: @secret Card)
+    stdio.println("processing card ${card.pan}")
+
+// WRONG (hard error under @strict_ifc): same leak, but this function
+// opted into strict information-flow, so the warning becomes an error
+// and the program refuses to compile.
+@strict_ifc()
+fun leak_to_console_strict(stdio: Stdio, card: @secret Card)
+    stdio.println("debug PAN=${card.pan}")
+
+// WRONG (warning): the CVV must never be emitted at all. Same check.
+fun leak_cvv(stdio: Stdio, card: @secret Card)
+    stdio.eprintln("cvv was ${card.cvv}")

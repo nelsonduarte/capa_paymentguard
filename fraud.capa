@@ -1,0 +1,124 @@
+// fraud.capa
+//
+// Deterministic, explainable fraud / AML risk scoring. Pure: this
+// module takes NO capabilities at all. That is the point: the SBOM
+// proves the fraud engine cannot read the network, the filesystem,
+// the environment, or the clock. It sees only the data it is handed
+// and returns a verdict plus the reasons behind it (regulatory
+// requirement: risk decisions must be explainable).
+//
+// Behavioural-anomaly / ML scoring is intentionally out of scope:
+// Capa targets the explainable, rule-based core that a regulator can
+// audit line by line.
+
+import domain
+
+pub type FraudSignal {
+    code: String,
+    description: String,
+    risk: RiskCategory
+}
+
+pub type RiskAssessment {
+    risk: RiskCategory,
+    signals: List<FraudSignal>
+}
+
+pub type FraudConfig {
+    high_threshold_cents: Int,
+    velocity_limit: Int,
+    report_threshold_cents: Int
+}
+
+// =========================================================
+// Individual rules (each returns an optional signal)
+// =========================================================
+
+fun rule_high_amount(tx: Transaction, high_threshold_cents: Int) -> Option<FraudSignal>
+    if tx.amount_cents >= high_threshold_cents
+        return Some(FraudSignal {
+            code: "AMOUNT_HIGH",
+            description: "amount ${tx.amount_cents} at or above high-value threshold ${high_threshold_cents}",
+            risk: High
+        })
+    return None
+
+fun rule_velocity(recent_count: Int, velocity_limit: Int) -> Option<FraudSignal>
+    if recent_count > velocity_limit
+        return Some(FraudSignal {
+            code: "VELOCITY",
+            description: "${recent_count} recent transactions exceed velocity limit ${velocity_limit}",
+            risk: High
+        })
+    return None
+
+fun rule_sanctions(tx: Transaction, blocklist: List<String>) -> Option<FraudSignal>
+    if blocklist.contains(tx.beneficiary)
+        return Some(FraudSignal {
+            code: "SANCTIONS",
+            description: "beneficiary is on the block / sanctions list",
+            risk: Critical
+        })
+    return None
+
+fun rule_structuring(tx: Transaction, report_threshold_cents: Int) -> Option<FraudSignal>
+    // Amounts sitting just below a reporting threshold are a classic
+    // structuring (smurfing) signal.
+    let margin = report_threshold_cents - tx.amount_cents
+    if margin >= 0 and margin <= 1000
+        return Some(FraudSignal {
+            code: "STRUCTURING",
+            description: "amount just below the reporting threshold (possible structuring)",
+            risk: Medium
+        })
+    return None
+
+// =========================================================
+// Aggregation
+// =========================================================
+
+pub fun assess(
+    tx: Transaction,
+    recent_count: Int,
+    blocklist: List<String>,
+    cfg: FraudConfig
+) -> RiskAssessment
+    var signals: List<FraudSignal> = []
+    match rule_high_amount(tx, cfg.high_threshold_cents)
+        Some(s) -> signals.push(s)
+        None    -> ()
+    match rule_velocity(recent_count, cfg.velocity_limit)
+        Some(s) -> signals.push(s)
+        None    -> ()
+    match rule_sanctions(tx, blocklist)
+        Some(s) -> signals.push(s)
+        None    -> ()
+    match rule_structuring(tx, cfg.report_threshold_cents)
+        Some(s) -> signals.push(s)
+        None    -> ()
+
+    var top = Low
+    for s in signals
+        top = max_risk(top, s.risk)
+    return RiskAssessment {
+        risk: top,
+        signals: signals
+    }
+
+// Human-readable justification: one line per signal that fired.
+pub fun explain(a: RiskAssessment) -> String
+    if a.signals.is_empty()
+        return "no risk signals"
+    var out = ""
+    for s in a.signals
+        out = "${out}[${s.code}] ${s.description}; "
+    return out
+
+// Map an assessment to a pipeline decision. High and Critical do not
+// auto-approve; the reason is carried through for the audit trail.
+pub fun risk_to_decision(a: RiskAssessment) -> Decision
+    return match a.risk
+        Critical -> Declined("critical risk: ${explain(a)}")
+        High     -> Review("high risk: ${explain(a)}")
+        Medium   -> Review("medium risk: ${explain(a)}")
+        Low      -> Approved

@@ -1,0 +1,179 @@
+// main.capa
+//
+// Orchestrates the transaction lifecycle from the enunciado (section
+// 7): authenticate -> validate -> dynamic-link -> de-duplicate ->
+// risk-assess -> execute or refuse -> audit. Wires the pure modules
+// together and runs one demo scenario end to end.
+//
+// Capabilities used here: Stdio (console output) and Fs (the audit
+// log). Note what main does NOT need and never acquires: Net, Env,
+// Proc, Db, Clock, Random, Unsafe. The SBOM proves it.
+
+import domain
+import validate
+import auth
+import fraud
+import mask
+import audit
+
+// Fixed values so the demo output is reproducible (a real system
+// reads the clock and a CSPRNG; both are capabilities we choose not
+// to take in this showcase).
+fun demo_now() -> Float
+    return 1735689600.0
+
+fun audit_event(action: String, source: String, detail: String) -> AuditEvent
+    return AuditEvent {
+        timestamp_secs: demo_now(),
+        actor: "customer:alice",
+        action: action,
+        source: source,
+        detail: detail
+    }
+
+// The pipeline. Returns the decision and appends one audit event per
+// stage to ``trail``. Takes the card by ``@secret`` binding so the
+// cardholder data is in the secret domain throughout; the only data
+// that ever reaches the (public) audit trail is masked via mask.capa.
+pub fun process(
+    card: @secret Card,
+    tx: Transaction,
+    knowledge_ok: Bool,
+    possession_ok: Bool,
+    inherence_ok: Bool,
+    seen: Set<String>,
+    blocklist: List<String>,
+    recent_count: Int,
+    cfg: FraudConfig,
+    auth_code: String,
+    nonce: String,
+    trail: List<AuditEvent>
+) -> Decision
+    let masked = mask.mask_pan(card.pan)
+
+    // (1) Strong Customer Authentication: at least two factor classes.
+    let exemption = auth.evaluate_exemption(tx, 3000, false)
+    if auth.requires_sca(exemption)
+        if not auth.sca_satisfied(knowledge_ok, possession_ok, inherence_ok)
+            trail.push(audit_event("AUTH_FAILED", "web", "card ${masked}: SCA not satisfied"))
+            return Declined("strong authentication required")
+    trail.push(audit_event("AUTH_OK", "web", "card ${masked}; exemption=${auth.exemption_reason(exemption)}"))
+
+    // (2) Structural validation.
+    match validate.validate_structure(tx)
+        Ok(_)    -> ()
+        Err(msg) ->
+            trail.push(audit_event("VALIDATION_FAILED", "web", "card ${masked}: ${msg}"))
+            return Declined("invalid transaction: ${msg}")
+
+    // (3) Dynamic linking: the authorization code must still bind to
+    //     this exact amount + beneficiary.
+    if not validate.verify_dynamic_link(tx, auth_code, nonce)
+        trail.push(audit_event("DYNLINK_FAILED", "web", "card ${masked}: amount/beneficiary changed after authorization"))
+        return Declined("authorization no longer matches the transaction")
+
+    // (4) Idempotency: refuse a replayed transaction.
+    if not validate.claim(seen, validate.idempotency_key(tx))
+        trail.push(audit_event("DUPLICATE", "web", "card ${masked}: duplicate transaction ${tx.id}"))
+        return Declined("duplicate transaction")
+
+    // (5) Fraud / AML risk assessment (no capabilities, explainable).
+    let assessment = fraud.assess(tx, recent_count, blocklist, cfg)
+    let decision = fraud.risk_to_decision(assessment)
+
+    // (6) Record the decision with its justification.
+    match decision
+        Approved   -> trail.push(audit_event("APPROVED", "web", "card ${masked}; amount=${tx.amount_cents} ${tx.currency}"))
+        Review(r)  -> trail.push(audit_event("REVIEW", "web", "card ${masked}: ${r}"))
+        Declined(r) -> trail.push(audit_event("DECLINED", "web", "card ${masked}: ${r}"))
+
+    return decision
+
+fun print_decision(stdio: Stdio, label: String, d: Decision) -> Unit
+    let line = match d
+        Approved    -> "APPROVED"
+        Review(r)   -> "REVIEW (${r})"
+        Declined(r) -> "DECLINED (${r})"
+    stdio.println("${label}: ${line}")
+
+pub fun main(stdio: Stdio, fs: Fs)
+    stdio.println("== capa_paymentguard demo ==")
+
+    let card: @secret Card = Card {
+        pan: "4111111111111111",
+        cvv: "123",
+        exp_month: 12,
+        exp_year: 2030,
+        holder: "ALICE EXAMPLE"
+    }
+
+    let cfg = FraudConfig {
+        high_threshold_cents: 500000,       // 5 000.00
+        velocity_limit: 5,
+        report_threshold_cents: 1000000     // 10 000.00
+    }
+    let blocklist: List<String> = ["IBAN-SANCTIONED-001"]
+    let nonce = "nonce-2026-0001"
+
+    var trail: List<AuditEvent> = []
+
+    // --- Scenario A: a clean, low-risk purchase ---
+    let tx_a = Transaction {
+        id: "tx-1001",
+        timestamp_secs: demo_now(),
+        amount_cents: 4200,                 // 42.00, below the SCA exemption
+        currency: "EUR",
+        customer_id: "cust-alice",
+        beneficiary: "IBAN-MERCHANT-SHOP",
+        kind: "card"
+    }
+    let code_a = validate.authorization_code(tx_a, nonce)
+    let seen_a = new_set()
+    let dec_a = process(card, tx_a, true, true, false, seen_a, blocklist, 1, cfg, code_a, nonce, trail)
+    print_decision(stdio, "Scenario A (small purchase)", dec_a)
+
+    // --- Scenario B: a high-value transfer to a sanctioned account ---
+    let tx_b = Transaction {
+        id: "tx-1002",
+        timestamp_secs: demo_now(),
+        amount_cents: 750000,               // 7 500.00, high value
+        currency: "EUR",
+        customer_id: "cust-alice",
+        beneficiary: "IBAN-SANCTIONED-001",
+        kind: "transfer"
+    }
+    let code_b = validate.authorization_code(tx_b, nonce)
+    let seen_b = new_set()
+    let dec_b = process(card, tx_b, true, true, false, seen_b, blocklist, 1, cfg, code_b, nonce, trail)
+    print_decision(stdio, "Scenario B (sanctioned payee)", dec_b)
+
+    // --- Scenario C: tampered amount after authorization ---
+    let tx_c = Transaction {
+        id: "tx-1003",
+        timestamp_secs: demo_now(),
+        amount_cents: 9000,
+        currency: "EUR",
+        customer_id: "cust-alice",
+        beneficiary: "IBAN-MERCHANT-SHOP",
+        kind: "card"
+    }
+    let code_c = validate.authorization_code(tx_c, nonce)
+    let tx_c_tampered = Transaction {
+        id: "tx-1003",
+        timestamp_secs: demo_now(),
+        amount_cents: 90000,                // attacker raised the amount 10x
+        currency: "EUR",
+        customer_id: "cust-alice",
+        beneficiary: "IBAN-MERCHANT-SHOP",
+        kind: "card"
+    }
+    let seen_c = new_set()
+    let dec_c = process(card, tx_c_tampered, true, true, false, seen_c, blocklist, 1, cfg, code_c, nonce, trail)
+    print_decision(stdio, "Scenario C (tampered amount)", dec_c)
+
+    // Persist the tamper-evident audit trail. The content is public by
+    // construction: every detail line was masked through mask.capa, so
+    // this Fs.write carries no cardholder data in the clear.
+    match audit.write_log(fs, "audit_log.txt", trail)
+        Ok(_)    -> stdio.println("audit trail written to audit_log.txt (${trail.length()} events)")
+        Err(_)   -> stdio.eprintln("failed to write audit trail")

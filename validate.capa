@@ -1,0 +1,67 @@
+// validate.capa
+//
+// Transaction validation, PSD2 dynamic linking, and idempotency.
+// Pure: no capabilities, no I/O. All decisions here are structural
+// and deterministic, so they are trivially explainable and testable.
+
+import domain
+import crypto_stub
+
+// =========================================================
+// Structural validation
+// =========================================================
+//
+// Reject malformed transactions before any side effect: positive
+// amount, supported currency, non-empty beneficiary.
+
+pub fun is_supported_currency(code: String) -> Bool
+    return code == "EUR" or code == "USD" or code == "GBP"
+
+pub fun validate_structure(tx: Transaction) -> Result<Unit, String>
+    if tx.amount_cents <= 0
+        return Err("amount must be positive")
+    if not is_supported_currency(tx.currency)
+        return Err("unsupported currency: ${tx.currency}")
+    if tx.beneficiary == ""
+        return Err("beneficiary is required")
+    if tx.customer_id == ""
+        return Err("customer is required")
+    return Ok(())
+
+// =========================================================
+// Dynamic linking (PSD2 SCA)
+// =========================================================
+//
+// The authorization code is bound to the exact amount and
+// beneficiary of THIS transaction. Any later change to either field
+// produces a different code, so a tampered transaction fails
+// verification. Integrity, not secrecy, is the goal here, so the
+// material is public.
+
+fun link_material(tx: Transaction, nonce: String) -> String
+    return "${tx.amount_cents}|${tx.currency}|${tx.beneficiary}|${nonce}"
+
+pub fun authorization_code(tx: Transaction, nonce: String) -> String
+    // A MAC over the amount + beneficiary binding (see crypto_stub
+    // for the NOT-REAL-CRYPTO caveat).
+    return crypto_stub.hmac(link_material(tx, nonce), "auth-code-key")
+
+pub fun verify_dynamic_link(tx: Transaction, code: String, nonce: String) -> Bool
+    return authorization_code(tx, nonce) == code
+
+// =========================================================
+// Idempotency
+// =========================================================
+//
+// A transaction must never be executed twice on resend. The ledger
+// is a set of keys already processed; ``claim`` returns true the
+// first time a key is seen and false on every repeat.
+
+pub fun idempotency_key(tx: Transaction) -> String
+    return tx.id
+
+pub fun claim(seen: Set<String>, key: String) -> Bool
+    if seen.contains(key)
+        return false
+    seen.add(key)
+    return true

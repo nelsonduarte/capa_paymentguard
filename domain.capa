@@ -1,0 +1,121 @@
+// domain.capa
+//
+// Shared domain vocabulary for the payment-security core. Pure data
+// plus small total helpers; zero capabilities, no I/O. Imported by
+// every other module so the types stay consistent end to end.
+//
+// The information-flow story lives in the type annotations here: the
+// fields that hold cardholder data and credentials are marked
+// ``@secret``. From that single annotation the compiler propagates a
+// security label through every value derived from them, and proves
+// (see audit.capa / fraud.capa) that they cannot reach a public sink
+// without passing through an audited ``declassify`` (see mask.capa).
+
+// =========================================================
+// Cardholder data (PCI DSS scope)
+// =========================================================
+//
+// ``pan`` (primary account number) and ``cvv`` are the regulated
+// secrets. Marking them ``@secret`` puts the whole Card value in the
+// secret domain (field reads inherit the receiver's label), which is
+// the safe default for a structure that carries cardholder data.
+
+pub type Card {
+    pan: @secret String,        // full card number - never logged in clear
+    cvv: @secret String,        // never stored, never logged
+    exp_month: Int,
+    exp_year: Int,
+    holder: String
+}
+
+// =========================================================
+// Customer + risk profile (KYC)
+// =========================================================
+
+pub type Customer {
+    id: String,
+    display_name: String,
+    country: String,
+    risk_profile: RiskCategory
+}
+
+// =========================================================
+// Transactions
+// =========================================================
+
+pub type Transaction {
+    id: String,
+    timestamp_secs: Float,
+    amount_cents: Int,          // integer minor units; no float money
+    currency: String,
+    customer_id: String,
+    beneficiary: String,
+    kind: String                // "card" | "transfer" | "wire"
+}
+
+// =========================================================
+// Risk classification (ordered low -> high)
+// =========================================================
+
+pub type RiskCategory =
+    Low
+    Medium
+    High
+    Critical
+
+pub fun risk_name(r: RiskCategory) -> String
+    return match r
+        Low      -> "Low"
+        Medium   -> "Medium"
+        High     -> "High"
+        Critical -> "Critical"
+
+pub fun risk_rank(r: RiskCategory) -> Int
+    return match r
+        Low      -> 0
+        Medium   -> 1
+        High     -> 2
+        Critical -> 3
+
+pub fun max_risk(a: RiskCategory, b: RiskCategory) -> RiskCategory
+    if risk_rank(a) >= risk_rank(b)
+        return a
+    return b
+
+// =========================================================
+// Authentication factors (PSD2 / SCA)
+// =========================================================
+//
+// SCA requires at least two of three independent factor classes.
+// The secret material backing each factor (PIN, OTP) is @secret and
+// is verified, never echoed.
+
+pub type FactorClass =
+    Knowledge       // something the user knows (PIN, password)
+    Possession      // something the user has (OTP token, device)
+    Inherence       // something the user is (biometric)
+
+pub fun factor_name(f: FactorClass) -> String
+    return match f
+        Knowledge  -> "knowledge"
+        Possession -> "possession"
+        Inherence  -> "inherence"
+
+// =========================================================
+// Decisions
+// =========================================================
+//
+// The outcome of the pipeline for one transaction. ``Declined`` and
+// ``Review`` carry an explainable reason (regulatory requirement:
+// risk decisions must be justifiable).
+
+pub type Decision =
+    Approved
+    Declined(String)
+    Review(String)
+
+pub fun decision_name(d: Decision) -> String
+    return match d
+        Approved    -> "APPROVED"
+        Declined(_) -> "DECLINED"
+        Review(_)   -> "REVIEW"

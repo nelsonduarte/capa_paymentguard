@@ -1,0 +1,39 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "subject": [
+    {
+      "name": "main.capa",
+      "digest": {
+        "sha256": "a338b2d75e0432c0b5edd97ae828b0ae2ff4e1c38b5d575a25787d7d0f661651"
+      }
+    }
+  ],
+  "predicateType": "https://slsa.dev/provenance/v1",
+  "predicate": {
+    "buildDefinition": {
+      "buildType": "https://capa-lang.org/build/transpile-to-python/v1",
+      "externalParameters": {
+        "source": "main.capa"
+      },
+      "internalParameters": {
+        "capaVersion": "1.0.0rc6",
+        "target": "python>=3.10"
+      },
+      "resolvedDependencies": []
+    },
+    "runDetails": {
+      "builder": {
+        "id": "https://capa-lang.org/cli",
+        "version": {
+          "capa": "1.0.0rc6"
+        }
+      },
+      "metadata": {
+        "invocationId": "6f6b6607-f942-56b0-a153-e8406e40dba6",
+        "startedOn": "2026-06-02T18:35:09Z",
+        "finishedOn": "2026-06-02T18:35:09Z"
+      },
+      "byproducts": []
+    }
+  }
+}

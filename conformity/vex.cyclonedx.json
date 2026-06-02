@@ -1,0 +1,24 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-02T18:35:08Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "capa",
+          "version": "1.0.0rc6"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "capa:program:main.capa",
+      "type": "application",
+      "name": "main.capa",
+      "version": "1.0.0rc6"
+    }
+  },
+  "vulnerabilities": []
+}

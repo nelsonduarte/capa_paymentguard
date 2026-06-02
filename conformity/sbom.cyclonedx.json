@@ -1,0 +1,3681 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:c9bf1dfb-a59d-5de4-b19e-24b838006ee4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-02T18:35:08Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "capa",
+          "version": "1.0.0rc6"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "capa:program:main.capa",
+      "type": "application",
+      "name": "main.capa",
+      "version": "1.0.0rc6",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": []
+    },
+    "properties": [
+      {
+        "name": "capa:schema_version",
+        "value": "1"
+      },
+      {
+        "name": "capa:summary:total_functions",
+        "value": "44"
+      },
+      {
+        "name": "capa:summary:functions_with_capabilities",
+        "value": "3"
+      },
+      {
+        "name": "capa:summary:functions_with_attributes",
+        "value": "0"
+      },
+      {
+        "name": "capa:summary:functions_crossing_unsafe",
+        "value": "0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "bom-ref": "capa:builtin:main.capa:Fs",
+      "type": "library",
+      "name": "Fs",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "builtin-capability"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:builtin:main.capa:Stdio",
+      "type": "library",
+      "name": "Stdio",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "builtin-capability"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:risk_name",
+      "type": "library",
+      "name": "risk_name",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:66:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "r: RiskCategory"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:risk_rank",
+      "type": "library",
+      "name": "risk_rank",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:73:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Int"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "r: RiskCategory"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:max_risk",
+      "type": "library",
+      "name": "max_risk",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:80:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "RiskCategory"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "a: RiskCategory"
+        },
+        {
+          "name": "capa:param",
+          "value": "b: RiskCategory"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:factor_name",
+      "type": "library",
+      "name": "factor_name",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:98:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "f: FactorClass"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:decision_name",
+      "type": "library",
+      "name": "decision_name",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:117:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "d: Decision"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:slow_hash",
+      "type": "library",
+      "name": "slow_hash",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:28:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "secret: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "salt: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:hmac",
+      "type": "library",
+      "name": "hmac",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:35:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "message: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "key: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m3__digest",
+      "type": "library",
+      "name": "digest",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:45:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Int"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "3"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "s: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:encrypt",
+      "type": "library",
+      "name": "encrypt",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:63:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "plaintext: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "key: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:constant_time_eq",
+      "type": "library",
+      "name": "constant_time_eq",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:69:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "a: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "b: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:is_supported_currency",
+      "type": "library",
+      "name": "is_supported_currency",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:17:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "code: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:validate_structure",
+      "type": "library",
+      "name": "validate_structure",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:20:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Result<Unit, String>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m2__link_material",
+      "type": "library",
+      "name": "link_material",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:41:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "2"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "nonce: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:authorization_code",
+      "type": "library",
+      "name": "authorization_code",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:44:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "nonce: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:verify_dynamic_link",
+      "type": "library",
+      "name": "verify_dynamic_link",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:49:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "code: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "nonce: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:idempotency_key",
+      "type": "library",
+      "name": "idempotency_key",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:60:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:claim",
+      "type": "library",
+      "name": "claim",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:63:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "seen: Set<String>"
+        },
+        {
+          "name": "capa:param",
+          "value": "key: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:verify_knowledge",
+      "type": "library",
+      "name": "verify_knowledge",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:19:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "provided_pin: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "stored_hash: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "salt: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:verify_possession",
+      "type": "library",
+      "name": "verify_possession",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:23:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "provided_otp: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "expected_otp: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:sca_factor_count",
+      "type": "library",
+      "name": "sca_factor_count",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:32:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Int"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "knowledge_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "possession_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "inherence_ok: Bool"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:sca_satisfied",
+      "type": "library",
+      "name": "sca_satisfied",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:42:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "knowledge_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "possession_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "inherence_ok: Bool"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:should_lock_account",
+      "type": "library",
+      "name": "should_lock_account",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:49:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "consecutive_failures: Int"
+        },
+        {
+          "name": "capa:param",
+          "value": "max_attempts: Int"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:evaluate_exemption",
+      "type": "library",
+      "name": "evaluate_exemption",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:64:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "ScaExemption"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "low_value_threshold_cents: Int"
+        },
+        {
+          "name": "capa:param",
+          "value": "is_trusted: Bool"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:requires_sca",
+      "type": "library",
+      "name": "requires_sca",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:71:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "ex: ScaExemption"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:exemption_reason",
+      "type": "library",
+      "name": "exemption_reason",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:77:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "ex: ScaExemption"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m5__rule_high_amount",
+      "type": "library",
+      "name": "rule_high_amount",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:37:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Option<FraudSignal>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "5"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "high_threshold_cents: Int"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m5__rule_velocity",
+      "type": "library",
+      "name": "rule_velocity",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:46:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Option<FraudSignal>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "5"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "recent_count: Int"
+        },
+        {
+          "name": "capa:param",
+          "value": "velocity_limit: Int"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m5__rule_sanctions",
+      "type": "library",
+      "name": "rule_sanctions",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:55:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Option<FraudSignal>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "5"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "blocklist: List<String>"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:_capa_m5__rule_structuring",
+      "type": "library",
+      "name": "rule_structuring",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:64:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Option<FraudSignal>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:source_module_index",
+          "value": "5"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "report_threshold_cents: Int"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:assess",
+      "type": "library",
+      "name": "assess",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:80:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "RiskAssessment"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "recent_count: Int"
+        },
+        {
+          "name": "capa:param",
+          "value": "blocklist: List<String>"
+        },
+        {
+          "name": "capa:param",
+          "value": "cfg: FraudConfig"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:explain",
+      "type": "library",
+      "name": "explain",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:109:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "a: RiskAssessment"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:risk_to_decision",
+      "type": "library",
+      "name": "risk_to_decision",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:119:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Decision"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "a: RiskAssessment"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:mask_pan",
+      "type": "library",
+      "name": "mask_pan",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:19:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "pan: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:pan_fingerprint",
+      "type": "library",
+      "name": "pan_fingerprint",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:35:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "pan: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "key: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:storable_credential",
+      "type": "library",
+      "name": "storable_credential",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:44:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "secret: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "salt: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:storable_ciphertext",
+      "type": "library",
+      "name": "storable_ciphertext",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:52:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "pan: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "data_key: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:format_line",
+      "type": "library",
+      "name": "format_line",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:33:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "String"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "prev_chain: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "e: AuditEvent"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:build_log",
+      "type": "library",
+      "name": "build_log",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:40:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "List<String>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "events: List<AuditEvent>"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:write_log",
+      "type": "library",
+      "name": "write_log",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:52:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Result<Unit, IoError>"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:declared_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:transitively_reachable_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "fs: Fs [cap]"
+        },
+        {
+          "name": "capa:param",
+          "value": "path: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "events: List<AuditEvent>"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:demo_now",
+      "type": "library",
+      "name": "demo_now",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:22:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Float"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:audit_event",
+      "type": "library",
+      "name": "audit_event",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:25:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "AuditEvent"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "action: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "source: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "detail: String"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:process",
+      "type": "library",
+      "name": "process",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:38:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Decision"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "card: Card"
+        },
+        {
+          "name": "capa:param",
+          "value": "tx: Transaction"
+        },
+        {
+          "name": "capa:param",
+          "value": "knowledge_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "possession_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "inherence_ok: Bool"
+        },
+        {
+          "name": "capa:param",
+          "value": "seen: Set<String>"
+        },
+        {
+          "name": "capa:param",
+          "value": "blocklist: List<String>"
+        },
+        {
+          "name": "capa:param",
+          "value": "recent_count: Int"
+        },
+        {
+          "name": "capa:param",
+          "value": "cfg: FraudConfig"
+        },
+        {
+          "name": "capa:param",
+          "value": "auth_code: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "nonce: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "trail: List<AuditEvent>"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:print_decision",
+      "type": "library",
+      "name": "print_decision",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:92:1"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Unit"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "false"
+        },
+        {
+          "name": "capa:declared_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:transitively_reachable_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "stdio: Stdio [cap]"
+        },
+        {
+          "name": "capa:param",
+          "value": "label: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "d: Decision"
+        }
+      ]
+    },
+    {
+      "bom-ref": "capa:fn:main.capa:main",
+      "type": "library",
+      "name": "main",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "main.capa:99:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "()"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:declared_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:declared_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:transitively_reachable_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:transitively_reachable_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "stdio: Stdio [cap]"
+        },
+        {
+          "name": "capa:param",
+          "value": "fs: Fs [cap]"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "capa:program:main.capa",
+      "dependsOn": [
+        "capa:builtin:main.capa:Fs",
+        "capa:builtin:main.capa:Stdio",
+        "capa:fn:main.capa:risk_name",
+        "capa:fn:main.capa:risk_rank",
+        "capa:fn:main.capa:max_risk",
+        "capa:fn:main.capa:factor_name",
+        "capa:fn:main.capa:decision_name",
+        "capa:fn:main.capa:slow_hash",
+        "capa:fn:main.capa:hmac",
+        "capa:fn:main.capa:_capa_m3__digest",
+        "capa:fn:main.capa:encrypt",
+        "capa:fn:main.capa:constant_time_eq",
+        "capa:fn:main.capa:is_supported_currency",
+        "capa:fn:main.capa:validate_structure",
+        "capa:fn:main.capa:_capa_m2__link_material",
+        "capa:fn:main.capa:authorization_code",
+        "capa:fn:main.capa:verify_dynamic_link",
+        "capa:fn:main.capa:idempotency_key",
+        "capa:fn:main.capa:claim",
+        "capa:fn:main.capa:verify_knowledge",
+        "capa:fn:main.capa:verify_possession",
+        "capa:fn:main.capa:sca_factor_count",
+        "capa:fn:main.capa:sca_satisfied",
+        "capa:fn:main.capa:should_lock_account",
+        "capa:fn:main.capa:evaluate_exemption",
+        "capa:fn:main.capa:requires_sca",
+        "capa:fn:main.capa:exemption_reason",
+        "capa:fn:main.capa:_capa_m5__rule_high_amount",
+        "capa:fn:main.capa:_capa_m5__rule_velocity",
+        "capa:fn:main.capa:_capa_m5__rule_sanctions",
+        "capa:fn:main.capa:_capa_m5__rule_structuring",
+        "capa:fn:main.capa:assess",
+        "capa:fn:main.capa:explain",
+        "capa:fn:main.capa:risk_to_decision",
+        "capa:fn:main.capa:mask_pan",
+        "capa:fn:main.capa:pan_fingerprint",
+        "capa:fn:main.capa:storable_credential",
+        "capa:fn:main.capa:storable_ciphertext",
+        "capa:fn:main.capa:format_line",
+        "capa:fn:main.capa:build_log",
+        "capa:fn:main.capa:write_log",
+        "capa:fn:main.capa:demo_now",
+        "capa:fn:main.capa:audit_event",
+        "capa:fn:main.capa:process",
+        "capa:fn:main.capa:print_decision",
+        "capa:fn:main.capa:main"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:max_risk",
+      "dependsOn": [
+        "capa:fn:main.capa:risk_rank"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:hmac",
+      "dependsOn": [
+        "capa:fn:main.capa:_capa_m3__digest"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:validate_structure",
+      "dependsOn": [
+        "capa:fn:main.capa:is_supported_currency"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:authorization_code",
+      "dependsOn": [
+        "capa:fn:main.capa:hmac",
+        "capa:fn:main.capa:_capa_m2__link_material"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:verify_dynamic_link",
+      "dependsOn": [
+        "capa:fn:main.capa:authorization_code"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:verify_knowledge",
+      "dependsOn": [
+        "capa:fn:main.capa:slow_hash"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:verify_possession",
+      "dependsOn": [
+        "capa:fn:main.capa:constant_time_eq"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:sca_satisfied",
+      "dependsOn": [
+        "capa:fn:main.capa:sca_factor_count"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:assess",
+      "dependsOn": [
+        "capa:fn:main.capa:_capa_m5__rule_high_amount",
+        "capa:fn:main.capa:_capa_m5__rule_velocity",
+        "capa:fn:main.capa:_capa_m5__rule_sanctions",
+        "capa:fn:main.capa:_capa_m5__rule_structuring",
+        "capa:fn:main.capa:max_risk"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:risk_to_decision",
+      "dependsOn": [
+        "capa:fn:main.capa:explain"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:pan_fingerprint",
+      "dependsOn": [
+        "capa:fn:main.capa:hmac"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:storable_credential",
+      "dependsOn": [
+        "capa:fn:main.capa:slow_hash"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:storable_ciphertext",
+      "dependsOn": [
+        "capa:fn:main.capa:encrypt"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:format_line",
+      "dependsOn": [
+        "capa:fn:main.capa:hmac"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:build_log",
+      "dependsOn": [
+        "capa:fn:main.capa:format_line",
+        "capa:fn:main.capa:hmac"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:write_log",
+      "dependsOn": [
+        "capa:builtin:main.capa:Fs",
+        "capa:fn:main.capa:build_log"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:audit_event",
+      "dependsOn": [
+        "capa:fn:main.capa:demo_now"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:process",
+      "dependsOn": [
+        "capa:fn:main.capa:mask_pan",
+        "capa:fn:main.capa:evaluate_exemption",
+        "capa:fn:main.capa:requires_sca",
+        "capa:fn:main.capa:sca_satisfied",
+        "capa:fn:main.capa:audit_event",
+        "capa:fn:main.capa:exemption_reason",
+        "capa:fn:main.capa:validate_structure",
+        "capa:fn:main.capa:verify_dynamic_link",
+        "capa:fn:main.capa:claim",
+        "capa:fn:main.capa:idempotency_key",
+        "capa:fn:main.capa:assess",
+        "capa:fn:main.capa:risk_to_decision"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:print_decision",
+      "dependsOn": [
+        "capa:builtin:main.capa:Stdio"
+      ]
+    },
+    {
+      "ref": "capa:fn:main.capa:main",
+      "dependsOn": [
+        "capa:builtin:main.capa:Fs",
+        "capa:builtin:main.capa:Stdio",
+        "capa:fn:main.capa:demo_now",
+        "capa:fn:main.capa:authorization_code",
+        "capa:fn:main.capa:process",
+        "capa:fn:main.capa:print_decision",
+        "capa:fn:main.capa:write_log"
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b90d3a0b-d1b0-592f-9cae-b43123312e14",
+  "serialNumber": "urn:uuid:a25346b6-f2f6-5ae7-a416-8fd89d2c8802",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-10T13:12:18Z",
+    "timestamp": "2026-06-10T15:06:30Z",
     "tools": {
       "components": [
         {
@@ -96,7 +96,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:66:5"
+          "value": "domain.capa:66:5"
         },
         {
           "name": "capa:return_type",
@@ -168,7 +168,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:73:5"
+          "value": "domain.capa:73:5"
         },
         {
           "name": "capa:return_type",
@@ -240,7 +240,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:80:5"
+          "value": "domain.capa:80:5"
         },
         {
           "name": "capa:return_type",
@@ -316,7 +316,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:98:5"
+          "value": "domain.capa:98:5"
         },
         {
           "name": "capa:return_type",
@@ -388,7 +388,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:117:5"
+          "value": "domain.capa:117:5"
         },
         {
           "name": "capa:return_type",
@@ -460,7 +460,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:28:5"
+          "value": "crypto_stub.capa:28:5"
         },
         {
           "name": "capa:return_type",
@@ -536,7 +536,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:35:5"
+          "value": "crypto_stub.capa:35:5"
         },
         {
           "name": "capa:return_type",
@@ -612,7 +612,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:45:1"
+          "value": "crypto_stub.capa:45:1"
         },
         {
           "name": "capa:return_type",
@@ -688,7 +688,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:63:5"
+          "value": "crypto_stub.capa:63:5"
         },
         {
           "name": "capa:return_type",
@@ -764,7 +764,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:69:5"
+          "value": "crypto_stub.capa:69:5"
         },
         {
           "name": "capa:return_type",
@@ -840,7 +840,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:17:5"
+          "value": "validate.capa:17:5"
         },
         {
           "name": "capa:return_type",
@@ -912,7 +912,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:20:5"
+          "value": "validate.capa:20:5"
         },
         {
           "name": "capa:return_type",
@@ -984,7 +984,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:41:1"
+          "value": "validate.capa:41:1"
         },
         {
           "name": "capa:return_type",
@@ -1064,7 +1064,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:44:5"
+          "value": "validate.capa:44:5"
         },
         {
           "name": "capa:return_type",
@@ -1140,7 +1140,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:49:5"
+          "value": "validate.capa:49:5"
         },
         {
           "name": "capa:return_type",
@@ -1220,7 +1220,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:60:5"
+          "value": "validate.capa:60:5"
         },
         {
           "name": "capa:return_type",
@@ -1292,7 +1292,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:63:5"
+          "value": "validate.capa:63:5"
         },
         {
           "name": "capa:return_type",
@@ -1368,7 +1368,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:19:5"
+          "value": "auth.capa:19:5"
         },
         {
           "name": "capa:return_type",
@@ -1448,7 +1448,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:23:5"
+          "value": "auth.capa:23:5"
         },
         {
           "name": "capa:return_type",
@@ -1524,7 +1524,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:32:5"
+          "value": "auth.capa:32:5"
         },
         {
           "name": "capa:return_type",
@@ -1604,7 +1604,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:42:5"
+          "value": "auth.capa:42:5"
         },
         {
           "name": "capa:return_type",
@@ -1684,7 +1684,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:49:5"
+          "value": "auth.capa:49:5"
         },
         {
           "name": "capa:return_type",
@@ -1760,7 +1760,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:64:5"
+          "value": "auth.capa:64:5"
         },
         {
           "name": "capa:return_type",
@@ -1840,7 +1840,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:71:5"
+          "value": "auth.capa:71:5"
         },
         {
           "name": "capa:return_type",
@@ -1912,7 +1912,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:77:5"
+          "value": "auth.capa:77:5"
         },
         {
           "name": "capa:return_type",
@@ -1984,7 +1984,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:37:1"
+          "value": "fraud.capa:37:1"
         },
         {
           "name": "capa:return_type",
@@ -2064,7 +2064,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:46:1"
+          "value": "fraud.capa:46:1"
         },
         {
           "name": "capa:return_type",
@@ -2144,7 +2144,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:55:1"
+          "value": "fraud.capa:55:1"
         },
         {
           "name": "capa:return_type",
@@ -2224,7 +2224,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:64:1"
+          "value": "fraud.capa:64:1"
         },
         {
           "name": "capa:return_type",
@@ -2304,7 +2304,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:80:5"
+          "value": "fraud.capa:80:5"
         },
         {
           "name": "capa:return_type",
@@ -2388,7 +2388,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:109:5"
+          "value": "fraud.capa:109:5"
         },
         {
           "name": "capa:return_type",
@@ -2460,7 +2460,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:119:5"
+          "value": "fraud.capa:119:5"
         },
         {
           "name": "capa:return_type",
@@ -2532,7 +2532,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:19:5"
+          "value": "mask.capa:19:5"
         },
         {
           "name": "capa:return_type",
@@ -2604,7 +2604,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:35:5"
+          "value": "mask.capa:35:5"
         },
         {
           "name": "capa:return_type",
@@ -2680,7 +2680,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:44:5"
+          "value": "mask.capa:44:5"
         },
         {
           "name": "capa:return_type",
@@ -2756,7 +2756,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:52:5"
+          "value": "mask.capa:52:5"
         },
         {
           "name": "capa:return_type",
@@ -2832,7 +2832,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:33:5"
+          "value": "audit.capa:33:5"
         },
         {
           "name": "capa:return_type",
@@ -2908,7 +2908,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:40:5"
+          "value": "audit.capa:40:5"
         },
         {
           "name": "capa:return_type",
@@ -2980,7 +2980,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:52:5"
+          "value": "audit.capa:52:5"
         },
         {
           "name": "capa:return_type",

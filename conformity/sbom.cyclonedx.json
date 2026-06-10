@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a25346b6-f2f6-5ae7-a416-8fd89d2c8802",
+  "serialNumber": "urn:uuid:b02ccbb4-cbe8-5e7e-8bdd-9f4c9ece9dc1",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-10T15:06:30Z",
+    "timestamp": "2026-06-10T17:05:25Z",
     "tools": {
       "components": [
         {
@@ -3328,7 +3328,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:92:1"
+          "value": "main.capa:102:1"
         },
         {
           "name": "capa:return_type",
@@ -3412,7 +3412,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:99:5"
+          "value": "main.capa:113:5"
         },
         {
           "name": "capa:return_type",

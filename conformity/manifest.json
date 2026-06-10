@@ -3194,7 +3194,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "main.capa:92:1",
+      "pos": "main.capa:102:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -3246,9 +3246,22 @@
       "attributes": [],
       "calls": [
         {
+          "kind": "fn",
+          "callee": "declassify",
+          "pos": "103:19",
+          "args": [
+            "d",
+            "\"authorization decision is the pipeline's public output: approve/decline/revi..."
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "97:5",
+          "pos": "111:5",
           "args": [
             "\"${...}: ${...}\""
           ],
@@ -3257,7 +3270,13 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [
+        {
+          "reason": "authorization decision is the pipeline's public output: approve/decline/review plus a rule-derived reason, no cardholder data",
+          "value": "d",
+          "pos": "103:19"
+        }
+      ]
     },
     {
       "name": "main",
@@ -3265,7 +3284,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "main.capa:99:5",
+      "pos": "main.capa:113:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -3313,7 +3332,7 @@
         {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "100:5",
+          "pos": "114:5",
           "args": [
             "\"== capa_paymentguard demo ==\""
           ],
@@ -3324,14 +3343,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "123:25",
+          "pos": "137:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "130:18",
+          "pos": "144:18",
           "args": [
             "tx_a",
             "nonce"
@@ -3344,14 +3363,14 @@
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "131:18",
+          "pos": "145:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "132:17",
+          "pos": "146:17",
           "args": [
             "card",
             "tx_a",
@@ -3384,7 +3403,7 @@
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "133:5",
+          "pos": "147:5",
           "args": [
             "stdio",
             "\"Scenario A (small purchase)\"",
@@ -3399,14 +3418,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "138:25",
+          "pos": "152:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "145:18",
+          "pos": "159:18",
           "args": [
             "tx_b",
             "nonce"
@@ -3419,14 +3438,14 @@
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "146:18",
+          "pos": "160:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "147:17",
+          "pos": "161:17",
           "args": [
             "card",
             "tx_b",
@@ -3459,7 +3478,7 @@
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "148:5",
+          "pos": "162:5",
           "args": [
             "stdio",
             "\"Scenario B (sanctioned payee)\"",
@@ -3474,14 +3493,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "153:25",
+          "pos": "167:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "160:18",
+          "pos": "174:18",
           "args": [
             "tx_c",
             "nonce"
@@ -3494,21 +3513,21 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "163:25",
+          "pos": "177:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "170:18",
+          "pos": "184:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "171:17",
+          "pos": "185:17",
           "args": [
             "card",
             "tx_c_tampered",
@@ -3541,7 +3560,7 @@
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "172:5",
+          "pos": "186:5",
           "args": [
             "stdio",
             "\"Scenario C (tampered amount)\"",
@@ -3556,7 +3575,7 @@
         {
           "kind": "fn",
           "callee": "write_log",
-          "pos": "177:11",
+          "pos": "191:11",
           "args": [
             "fs",
             "\"audit_log.txt\"",
@@ -3571,7 +3590,7 @@
         {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "178:21",
+          "pos": "192:21",
           "args": [
             "\"audit trail written to audit_log.txt (${...} events)\""
           ],
@@ -3582,14 +3601,14 @@
         {
           "kind": "method",
           "callee": "trail.length",
-          "pos": "178:76",
+          "pos": "192:76",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "method",
           "callee": "stdio.eprintln",
-          "pos": "179:21",
+          "pos": "193:21",
           "args": [
             "\"failed to write audit trail\""
           ],
@@ -3606,7 +3625,7 @@
     "functions_with_capabilities": 3,
     "functions_with_attributes": 0,
     "functions_crossing_unsafe": 0,
-    "declassification_sites": 4,
+    "declassification_sites": 5,
     "protocol_states": 0
   }
 }

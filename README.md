@@ -24,7 +24,7 @@ the honesty section below before drawing any other conclusion.
   derived value and reports, at compile time, any `@secret` value that
   reaches a public sink (`Stdio.println`, `Fs.write`, `Net.post`, ...).
   See `leaky_example.capa` for the violation being caught, and
-  `mask.capa` for the only sanctioned way across.
+  `mask.capa` for the only sanctioned way across for cardholder data.
 - **Least privilege, proven.** The fraud / AML engine (`fraud.capa`)
   takes **no capabilities at all**. The SBOM proves it cannot touch the
   network, the filesystem, the clock, or the environment. `main` holds
@@ -76,12 +76,12 @@ the honesty section below before drawing any other conclusion.
 |---|---|---|
 | `domain.capa` | shared types; `@secret` on cardholder data | none |
 | `crypto_stub.capa` | **FAKE** crypto placeholders | none |
-| `mask.capa` | the only audited `declassify` bridges (PCI disclosure points) | none |
+| `mask.capa` | the audited cardholder-data `declassify` bridges (PCI disclosure points) | none |
 | `validate.capa` | structural validation, PSD2 dynamic linking, idempotency | none |
 | `auth.capa` | SCA / MFA (>= 2 factor classes), PSD2 exemptions, lockout | none |
 | `fraud.capa` | deterministic, explainable risk / AML rules | **none (proven)** |
 | `audit.capa` | tamper-evident, append-only logging of masked data | `Fs` |
-| `main.capa` | the section-7 transaction lifecycle, wired together | `Stdio`, `Fs` |
+| `main.capa` | the section-7 transaction lifecycle, wired together; the audited decision-output bridge (`print_decision`) | `Stdio`, `Fs` |
 | `leaky_example.capa` | counter-example: the leak the compiler rejects | (does not build clean, on purpose) |
 
 ## Run it
@@ -104,15 +104,21 @@ capa --check leaky_example.capa
 
 ```
 $ capa --manifest main.capa | jq '.summary.declassification_sites'
-4
+5
 
 $ capa --manifest main.capa | jq '.functions[] | select(.source_name=="assess")
                                    | .provably_excluded_capabilities'
 [ "Clock", "Db", "Env", "Net", "Proc", "Random", "Unsafe", ... ]
 ```
 
-The fraud engine *provably cannot exfiltrate*. The four disclosure
-points are named, with reasons, in the SBOM. That is the artifact a CRA
+The fraud engine *provably cannot exfiltrate*. The five disclosure
+points are named, with reasons, in the SBOM: four cardholder-data
+bridges in `mask.capa`, plus the decision-output bridge in `main.capa`
+(an authorization decision is the pipeline's legitimate public output,
+derived from transaction data and risk rules, never from the PAN or
+CVV; it inherits the `@secret` label from the card at the analysis's
+whole-value granularity, so the disclosure is declared and recorded
+where the decision leaves the program). That is the artifact a CRA
 / PCI reviewer wants, produced by the compiler rather than asserted in a
 PDF.
 

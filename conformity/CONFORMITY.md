@@ -46,7 +46,7 @@ Read straight off `manifest.json`:
 
 - **44 functions**, **0 crossing `Unsafe`** (no FFI / raw-pointer
   escape hatch anywhere in the program).
-- **4 declassification sites**, every secret-to-public disclosure in
+- **5 declassification sites**, every secret-to-public disclosure in
   the program, each with a stated reason:
 
   | Function | Reason recorded in the SBOM |
@@ -55,6 +55,13 @@ Read straight off `manifest.json`:
   | `pan_fingerprint` | PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible |
   | `storable_credential` | credential stored only as a salted slow-hash, never in clear |
   | `storable_ciphertext` | PCI DSS 3.4: PAN stored only as AES ciphertext under a KMS data key |
+  | `print_decision` | authorization decision is the pipeline's public output: approve/decline/review plus a rule-derived reason, no cardholder data |
+
+  The first four (in `mask.capa`) disclose *derived forms of cardholder
+  data*. The fifth (in `main.capa`) discloses the authorization
+  *decision*, which carries no cardholder bytes but inherits the
+  `@secret` label from the card at the analysis's whole-value
+  granularity, so its release is declared and audited too.
 
 - **Least privilege, proven**: the fraud / AML engine (`assess`,
   `risk_to_decision`) declares **no capabilities** and the manifest
@@ -64,7 +71,7 @@ Read straight off `manifest.json`:
 
 Everything else in the program is a compile-time guarantee: a card
 number (`@secret`) that reached a log line or a network call without
-passing through one of the four declassify bridges above would be a
+passing through one of the declassify bridges above would be a
 build error.
 
 ## CRA Annex I mapping
@@ -77,7 +84,7 @@ in the compiler repo for the full article-by-article treatment.
 |---|---|---|
 | Annex I Part I (2)(b) | secure-by-default configuration | Every function defaults to zero capabilities; `manifest.json` shows each function's declared set is exactly what its signature carries. |
 | Annex I Part I (2)(d) | protection from unauthorised access | Capabilities are unforgeable, flow only through parameters; `manifest.json` `declared_capabilities` per function is the access-control surface. |
-| Annex I Part I (2)(e) | confidentiality of processed data | IFC: card data is `@secret`; the compiler forbids it reaching a public sink unmasked. `manifest.json` `declassifications` enumerates the 4 sanctioned disclosures with reasons. |
+| Annex I Part I (2)(e) | confidentiality of processed data | IFC: card data is `@secret`; the compiler forbids it reaching a public sink unmasked. `manifest.json` `declassifications` enumerates the 5 sanctioned disclosures with reasons. |
 | Annex I Part I (2)(f) | integrity against manipulation | Each function's caps are derivable from its signature; an SBOM diff (`sbom.cyclonedx.json`) flags any dependency edit that widens a capability set. |
 | Annex I Part I (2)(g) | data minimisation | Least authority is the language default; IFC additionally keeps secret data from flowing to sinks it does not need to reach. |
 | Annex I Part I (2)(j) | limit attack surfaces / external interfaces | The declared capability set per function *is* the interface contract; `manifest.json` + the WIT spec under `capa --wasm --component` are the machine-readable surface. |

@@ -89,8 +89,22 @@ pub fun process(
 
     return decision
 
-fun print_decision(stdio: Stdio, label: String, d: Decision) -> Unit
-    let line = match d
+// The decision-disclosure bridge. An authorization decision (approve /
+// decline / review, plus its rule-derived reason) is the pipeline's
+// legitimate public output: it is computed from transaction data and
+// the explainable risk rules, never from the PAN or CVV. It still
+// arrives here labelled @secret, because process() takes the card by
+// @secret binding and the flow analysis labels a call's result at
+// whole-value granularity (the conservative rule the README documents).
+// So the disclosure is made explicit, and recorded in the SBOM, at the
+// one boundary where a decision leaves the program. Cardholder data
+// itself is still only ever declassified in mask.capa.
+fun print_decision(stdio: Stdio, label: String, d: @secret Decision) -> Unit
+    let outcome = declassify(
+        d,
+        reason: "authorization decision is the pipeline's public output: approve/decline/review plus a rule-derived reason, no cardholder data"
+    )
+    let line = match outcome
         Approved    -> "APPROVED"
         Review(r)   -> "REVIEW (${r})"
         Declined(r) -> "DECLINED (${r})"

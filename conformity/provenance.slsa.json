@@ -11,27 +11,27 @@
   "predicateType": "https://slsa.dev/provenance/v1",
   "predicate": {
     "buildDefinition": {
-      "buildType": "https://capa-lang.org/build/transpile-to-python/v1",
+      "buildType": "https://capa-language.com/build/transpile-to-python/v1",
       "externalParameters": {
         "source": "main.capa"
       },
       "internalParameters": {
-        "capaVersion": "1.0.0rc6",
+        "capaVersion": "1.0.0",
         "target": "python>=3.10"
       },
       "resolvedDependencies": []
     },
     "runDetails": {
       "builder": {
-        "id": "https://capa-lang.org/cli",
+        "id": "https://capa-language.com/cli",
         "version": {
-          "capa": "1.0.0rc6"
+          "capa": "1.0.0"
         }
       },
       "metadata": {
-        "invocationId": "6f6b6607-f942-56b0-a153-e8406e40dba6",
-        "startedOn": "2026-06-02T18:35:09Z",
-        "finishedOn": "2026-06-02T18:35:09Z"
+        "invocationId": "b4e7e34b-bc0a-54d5-b789-87263fd7d3c4",
+        "startedOn": "2026-06-10T13:12:19Z",
+        "finishedOn": "2026-06-10T13:12:19Z"
       },
       "byproducts": []
     }

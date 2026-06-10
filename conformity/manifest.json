@@ -1,8 +1,9 @@
 {
-  "capa_version": "1.0.0rc6",
+  "capa_version": "1.0.0",
   "schema_version": 1,
   "filename": "main.capa",
   "user_defined_capabilities": [],
+  "typestates": [],
   "functions": [
     {
       "name": "risk_name",
@@ -41,6 +42,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -82,6 +84,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -130,6 +133,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -194,6 +198,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -235,6 +240,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -283,6 +289,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -331,6 +338,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -384,6 +392,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -462,6 +471,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -510,6 +520,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -551,6 +562,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -592,6 +604,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -707,6 +720,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -755,6 +769,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -837,6 +852,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -892,6 +908,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -940,6 +957,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1018,6 +1036,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1080,6 +1099,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1149,6 +1169,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -1204,6 +1225,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1268,6 +1290,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -1323,6 +1346,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -1364,6 +1388,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -1405,6 +1430,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -1453,6 +1479,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1513,6 +1540,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1573,6 +1601,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1644,6 +1673,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1718,6 +1748,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1869,6 +1900,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -1918,6 +1950,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2026,6 +2059,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2114,6 +2148,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2195,6 +2230,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2276,6 +2312,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2357,6 +2394,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2412,6 +2450,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2508,6 +2547,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2566,6 +2606,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [],
       "declassifications": []
@@ -2621,6 +2662,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -2747,6 +2789,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -3199,6 +3242,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -3263,6 +3307,7 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "constant_time": false,
       "attributes": [],
       "calls": [
         {
@@ -3561,6 +3606,7 @@
     "functions_with_capabilities": 3,
     "functions_with_attributes": 0,
     "functions_crossing_unsafe": 0,
-    "declassification_sites": 4
+    "declassification_sites": 4,
+    "protocol_states": 0
   }
 }

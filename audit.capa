@@ -18,7 +18,7 @@
 // SBOM proves it cannot reach the network.
 
 import domain
-import crypto_stub
+import capa_hash.hmac
 
 pub type AuditEvent {
     timestamp_secs: Float,
@@ -32,7 +32,10 @@ pub type AuditEvent {
 // previous chain value, so the lines form a verifiable sequence.
 pub fun format_line(prev_chain: String, e: AuditEvent) -> String
     let body = "${e.timestamp_secs}|${e.actor}|${e.action}|${e.source}|${e.detail}"
-    let chain = crypto_stub.hmac("${prev_chain}|${body}", "audit-chain-key")
+    // HMAC-SHA256 over (prev chain || body) under the chain key. capa_hash
+    // takes (key, message) in that order; the chain key is the key, the
+    // chained body is the message.
+    let chain = hmac_sha256_hex_utf8("audit-chain-key", "${prev_chain}|${body}")
     return "${body}|chain=${chain}"
 
 // Build the full chained log. ``prev`` threads each line's chain hash
@@ -43,7 +46,7 @@ pub fun build_log(events: List<AuditEvent>) -> List<String>
     for e in events
         let line = format_line(prev, e)
         lines.push(line)
-        prev = crypto_stub.hmac(line, "audit-chain-key")
+        prev = hmac_sha256_hex_utf8("audit-chain-key", line)
     return lines
 
 // Persist the log. The content is public by construction (every

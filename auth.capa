@@ -7,6 +7,7 @@
 
 import domain
 import crypto_stub
+import capa_hash.verify
 
 // =========================================================
 // Credential verification
@@ -21,9 +22,11 @@ pub fun verify_knowledge(provided_pin: @secret String, stored_hash: String, salt
     return computed == stored_hash
 
 pub fun verify_possession(provided_otp: @secret String, expected_otp: @secret String) -> Bool
-    // constant-time comparison so a timing side channel cannot leak
-    // how many leading characters matched (CWE-208).
-    return crypto_stub.constant_time_eq(provided_otp, expected_otp)
+    // Real constant-time comparison (capa_hash.verify, @constant_time)
+    // so a timing side channel cannot leak how many leading characters
+    // matched (CWE-208). The function is pure, so passing two @secret
+    // OTPs is fine: only the Bool result is derived and there is no sink.
+    return strings_equal(provided_otp, expected_otp)
 
 // =========================================================
 // SCA: at least two independent factor classes

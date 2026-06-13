@@ -1,11 +1,24 @@
 # capa_paymentguard - package manifest.
 #
 # A showcase of Capa's capability discipline + information-flow
-# control on a payment-transaction security core. Standalone: built
-# on the standard library only, so `capa --check main.capa` runs with
-# no `capa install` step.
+# control on a payment-transaction security core.
+#
+# One dependency: capa_hash, a pure, zero-capabilities, SLSA-verified
+# library providing the real HMAC-SHA256, SHA-256, and constant-time
+# comparison used for integrity and authentication here. Run
+# `capa install` once to vendor and verify it (GPG tag signature +
+# SLSA provenance) before `capa --check`. The dependency does NOT
+# widen the capability surface: capa_hash holds no authority at all,
+# so least-privilege still holds, and the dependency is itself
+# machine-verifiable. The remaining crypto (the credential KDF and
+# the at-rest cipher) stays an honest stub in crypto_stub.capa.
 
 [package]
 name = "capa_paymentguard"
 version = "0.1.0"
 capa = ">=1.0.0-rc5"
+
+[dependencies.capa_hash]
+git = "https://github.com/nelsonduarte/capa_hash"
+tag = "v0.1.1"
+verify_key = "6C1D222D491FB88031E041A536CFB426101AA24B"

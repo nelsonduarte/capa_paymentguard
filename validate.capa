@@ -5,7 +5,7 @@
 // and deterministic, so they are trivially explainable and testable.
 
 import domain
-import crypto_stub
+import capa_hash.hmac
 
 // =========================================================
 // Structural validation
@@ -42,9 +42,11 @@ fun link_material(tx: Transaction, nonce: String) -> String
     return "${tx.amount_cents}|${tx.currency}|${tx.beneficiary}|${nonce}"
 
 pub fun authorization_code(tx: Transaction, nonce: String) -> String
-    // A MAC over the amount + beneficiary binding (see crypto_stub
-    // for the NOT-REAL-CRYPTO caveat).
-    return crypto_stub.hmac(link_material(tx, nonce), "auth-code-key")
+    // HMAC-SHA256 over the amount + beneficiary binding. capa_hash takes
+    // (key, message): the auth-code key is the key, the link material is
+    // the message. The material is public (integrity, not secrecy), so
+    // no declassify is needed here.
+    return hmac_sha256_hex_utf8("auth-code-key", link_material(tx, nonce))
 
 pub fun verify_dynamic_link(tx: Transaction, code: String, nonce: String) -> Bool
     return authorization_code(tx, nonce) == code

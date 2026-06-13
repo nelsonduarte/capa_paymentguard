@@ -13,6 +13,7 @@
 // intentional and recorded.
 
 import crypto_stub
+import capa_hash.hmac
 
 // Display form of a PAN: the last four digits only, the rest masked.
 // PCI DSS 3.4 permits displaying at most the first six / last four.
@@ -33,8 +34,13 @@ pub fun mask_pan(pan: @secret String) -> String
 // block / watch lists without storing or exposing the PAN. PCI DSS
 // allows comparison via keyed hashing with managed keys.
 pub fun pan_fingerprint(pan: @secret String, key: String) -> String
+    // HMAC-SHA256 keyed by `key` over the PAN. capa_hash takes
+    // (key, message): the managed key is the key, the @secret PAN is the
+    // message. The result is derived from a @secret, so it stays @secret
+    // (capa_hash is pure and the label flows through the argument) and
+    // the declassify below is required, not a no-op.
     return declassify(
-        hmac(pan, key),
+        hmac_sha256_hex_utf8(key, pan),
         reason: "PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible"
     )
 

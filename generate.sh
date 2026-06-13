@@ -4,6 +4,12 @@
 # Every artifact under conformity/ is emitted by the Capa compiler from
 # main.capa, so the pack is reproducible: an assessor can rerun this and
 # diff the output against what ships in the repo.
+#
+# The only expected difference on a re-diff is the build timestamps
+# (timestamp / created / annotationDate / startedOn / finishedOn), which
+# are stamped per generation. The substantive content (capabilities,
+# declassification sites, functions) is stable; manifest.json carries no
+# timestamp and is byte-identical.
 set -e
 
 mkdir -p conformity

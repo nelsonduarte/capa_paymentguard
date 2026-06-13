@@ -47,7 +47,12 @@ This is a **language showcase**, not a certified product.
 | `vex.cyclonedx.json` | VEX (exploitability statements) | `capa --vex main.capa` |
 | `provenance.slsa.json` | SLSA v1 build provenance | `capa --provenance main.capa` |
 
-Regenerate the whole pack with `./generate.sh` from the repo root.
+Regenerate the whole pack with `./generate.sh` from the repo root. On a
+re-diff against what ships here, the only expected divergence is the
+build timestamps (`timestamp`, `created`, `annotationDate`, `startedOn`,
+`finishedOn`), which are stamped at generation time. The substantive
+content (capabilities, declassification sites, functions) is stable and
+reproducible; `manifest.json` carries no timestamp and is byte-identical.
 
 ## Headline findings for this program
 

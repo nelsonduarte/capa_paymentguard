@@ -44,13 +44,23 @@ the honesty section below before drawing any other conclusion.
 
 ### The honest caveats (do not deploy this)
 
-- **The cryptography is FAKE.** Capa has no crypto in its standard
-  library. `crypto_stub.capa` contains deliberately trivial placeholders
-  (the "hash" is reversible, the "encryption" is not encryption). A real
-  system must replace them with vetted primitives (Argon2id, AES-256-GCM,
-  HMAC-SHA-256) behind a KMS. The showcase is about the data-flow
-  discipline *around* the crypto, which Capa enforces, not the crypto
-  itself, which it cannot do today.
+- **The integrity / authentication crypto is REAL; confidentiality and
+  the credential KDF are still stubs.** The HMAC-SHA256 used for the
+  tamper-evident audit chain, the PAN fingerprint, and the PSD2
+  dynamic-linking code, and the constant-time tag comparison, all come
+  from [`capa_hash`](https://github.com/nelsonduarte/capa_hash): a pure,
+  zero-capabilities Capa library whose release tag is GPG-signed and
+  SLSA-attested, verified by `capa install`. Those values are genuine
+  HMAC-SHA256 (cross-checked against Python's `hmac`), not placeholders.
+  What stays FAKE, in `crypto_stub.capa`, is exactly what `capa_hash`
+  does not (and should not) cover: the credential **KDF** (`slow_hash`,
+  which a real system makes memory-hard with Argon2id, never a bare SHA)
+  and the at-rest **cipher** (`encrypt`, which a real system makes
+  AES-256-GCM under a KMS data key). Those two must still be replaced
+  with vetted primitives behind a KMS before any deployment. The
+  showcase is about the data-flow discipline *around* the crypto, which
+  Capa enforces; the integrity half of the crypto is now real and
+  verifiable, the confidentiality / KDF half is honestly stubbed.
 - **The information-flow guarantee has known boundaries.** It tracks
   direct flows (values, parameters, interpolation, derived values,
   function results), aggregate literals (a `@secret` in a struct field,
@@ -75,7 +85,8 @@ the honesty section below before drawing any other conclusion.
 | File | Role | Capabilities |
 |---|---|---|
 | `domain.capa` | shared types; `@secret` on cardholder data | none |
-| `crypto_stub.capa` | **FAKE** crypto placeholders | none |
+| `crypto_stub.capa` | the two remaining **FAKE** placeholders: credential KDF + at-rest cipher | none |
+| `capa_hash` (dependency) | **real** HMAC-SHA256 + constant-time compare (pure, zero-cap, SLSA-verified) | none |
 | `mask.capa` | the audited cardholder-data `declassify` bridges (PCI disclosure points) | none |
 | `validate.capa` | structural validation, PSD2 dynamic linking, idempotency | none |
 | `auth.capa` | SCA / MFA (>= 2 factor classes), PSD2 exemptions, lockout | none |
@@ -87,6 +98,14 @@ the honesty section below before drawing any other conclusion.
 ## Run it
 
 ```sh
+# One-time: vendor + verify the capa_hash dependency. `capa install`
+# runs git verify-tag against the publisher's GPG key and checks the
+# SLSA provenance, then writes capa.lock. capa_hash is pure and holds
+# zero capabilities, so this adds a verifiable dependency without
+# widening the program's capability surface (least privilege still
+# holds). Import the publisher key first (see capa_hash/SECURITY.md).
+capa install
+
 # Type-check + information-flow check (clean: no leaks)
 capa --check main.capa
 
@@ -144,5 +163,5 @@ honesty boundary in `CONFORMITY.md`).
 | 4.6 protect sensitive data | `@secret` labels + `mask.capa` declassify bridges |
 | 4.7 explainable fraud / AML | `fraud.assess` returns signals + `fraud.explain` |
 | 4.8 secure logging (no secrets in clear) | information-flow check at the `Fs.write` sink |
-| Audit trail integrity | `audit.capa` hash chain |
+| Audit trail integrity | `audit.capa` HMAC-SHA256 hash chain (real, via `capa_hash`) |
 | SBOM / conformity evidence | `capa --manifest` (`declassification_sites`, capability proof) |

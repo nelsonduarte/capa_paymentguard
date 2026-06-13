@@ -14,10 +14,19 @@ the artifacts, not a policy document.
 
 This is a **language showcase**, not a certified product.
 
-- The cryptography in `crypto_stub.capa` is FAKE (Capa has no crypto
-  standard library). A real product replaces it with vetted primitives
-  behind a KMS. The pack demonstrates the data-flow discipline *around*
-  the crypto, not the crypto.
+- The integrity / authentication crypto is REAL; confidentiality and
+  the credential KDF are still stubs. HMAC-SHA256 (the audit hash
+  chain, the PAN fingerprint, the dynamic-linking code) and the
+  constant-time tag comparison come from the `capa_hash` dependency: a
+  pure, zero-capabilities Capa library whose release is GPG-signed and
+  SLSA-attested and verified by `capa install`. Those are genuine
+  HMAC-SHA256 values. What stays FAKE in `crypto_stub.capa` is exactly
+  what `capa_hash` does not cover: the credential **KDF** (`slow_hash`,
+  which belongs to Argon2id, not a bare SHA) and the at-rest **cipher**
+  (`encrypt`, which belongs to AES-256-GCM under a KMS data key). A
+  real product still replaces those two with vetted primitives behind a
+  KMS. The pack demonstrates the data-flow discipline *around* the
+  crypto; the integrity half of the crypto is now real and verifiable.
 - Capa is a programming language: it addresses the **technical** slice
   of Annex I that interacts with how a product is built and described.
   The **organisational** CRA obligations (vulnerability disclosure
@@ -44,8 +53,9 @@ Regenerate the whole pack with `./generate.sh` from the repo root.
 
 Read straight off `manifest.json`:
 
-- **44 functions**, **0 crossing `Unsafe`** (no FFI / raw-pointer
-  escape hatch anywhere in the program).
+- **69 functions** (the program plus the verified `capa_hash`
+  dependency it now pulls in), **0 crossing `Unsafe`** (no FFI /
+  raw-pointer escape hatch anywhere in the program or its dependency).
 - **5 declassification sites**, every secret-to-public disclosure in
   the program, each with a stated reason:
 

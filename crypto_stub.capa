@@ -4,23 +4,28 @@
 // ##  !!!  NOT REAL CRYPTOGRAPHY  -  DO NOT DEPLOY  !!!      ##
 // ############################################################
 //
-// Capa has no cryptography in its standard library. These functions
-// are DELIBERATELY TRIVIAL placeholders so the showcase compiles and
-// runs end to end. They provide ZERO security: the "hash" is
-// reversible, the "encryption" is not encryption, and the comparison
-// is not constant-time.
+// The integrity and authentication crypto in this showcase is now
+// REAL: HMAC-SHA256 and constant-time comparison come from the
+// capa_hash dependency (pure, zero-capabilities, signature- and
+// SLSA-verified). What remains here are the two primitives capa_hash
+// deliberately does NOT cover, kept as honest placeholders:
 //
-// A real payment system MUST replace every function here with a
-// vetted primitive behind a key-management service:
-//   - slow_hash      -> Argon2id / scrypt / bcrypt, per-user salt
-//   - hmac           -> HMAC-SHA-256 with a KMS-held key
-//   - encrypt        -> AES-256-GCM with a KMS-held data key
-//   - constant_time_eq -> a real constant-time comparison
+//   - slow_hash  -> a memory-hard credential KDF (Argon2id / scrypt /
+//                   bcrypt, per-user salt). A bare SHA is NOT a KDF, so
+//                   swapping in capa_hash here would be a regression of
+//                   honesty, not an upgrade. Still a stub.
+//   - encrypt    -> AES-256-GCM under a KMS-held data key. capa_hash is
+//                   a hash library; it has no cipher. Still a stub.
 //
-// The point of the showcase is NOT the crypto (which Capa cannot do
-// today); it is the capability discipline and information-flow
-// control that surround it. These stubs exist only to give the data
-// flow something to call.
+// Both functions below are DELIBERATELY TRIVIAL: the "hash" is
+// reversible and the "encryption" is not encryption. They provide ZERO
+// confidentiality. A real payment system MUST replace each with a
+// vetted primitive behind a key-management service.
+//
+// The point of the showcase is the capability discipline and
+// information-flow control that surround the crypto. These two stubs
+// exist only to give the data flow something to call until a vetted
+// KDF and AEAD are available.
 
 // A "slow hash" for credentials. Real systems use a memory-hard KDF.
 // Returns a value derived from the secret, so it stays @secret until
@@ -30,42 +35,7 @@ pub fun slow_hash(secret: @secret String, salt: String) -> String
     // times. This just tags the input. NOT SECURE.
     return "stubhash:${salt}:${secret}"
 
-// A keyed fingerprint for correlation-resistant matching (PCI DSS:
-// compare values via keyed hashing, never the raw PAN).
-pub fun hmac(message: @secret String, key: String) -> String
-    // STUB. A real HMAC is keyed and one-way over a real digest. This
-    // produces a fixed-width-ish fold so chained values stay bounded
-    // (a real HMAC output is fixed size). NOT SECURE.
-    let d = digest("${key}:${message}")
-    return "h${d}"
-
-// A bounded, deterministic fold over a string. Stands in for a real
-// digest so the audit hash-chain does not grow without bound. This is
-// NOT a cryptographic hash: collisions are trivial. NOT SECURE.
-fun digest(s: String) -> Int
-    let alpha = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |:;.,*-_=+/()[]"
-    var h = 1469598103
-    var i = 0
-    let n = s.length()
-    while i < n
-        var code = 63
-        match s.char_at(i)
-            Some(ch) ->
-                match alpha.index_of(ch)
-                    Some(k) -> code = k
-                    None    -> code = 63
-            None -> ()
-        h = (h * 131 + code) % 1000000007
-        i = i + 1
-    return h
-
 // Symmetric encryption for data at rest. Real systems use AES-256-GCM.
 pub fun encrypt(plaintext: @secret String, key: String) -> String
     // STUB. This is not encryption. NOT SECURE.
     return "stubenc:${key}:${plaintext}"
-
-// Compare two secret values. A real implementation is constant-time
-// to avoid leaking match progress through timing (CWE-208).
-pub fun constant_time_eq(a: @secret String, b: @secret String) -> Bool
-    // STUB: ordinary equality is NOT constant-time. NOT SECURE.
-    return a == b

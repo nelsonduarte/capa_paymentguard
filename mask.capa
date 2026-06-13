@@ -1,10 +1,21 @@
 // mask.capa
 //
-// The audited secret -> public bridges. THIS IS THE ONLY MODULE that
-// is allowed to declassify cardholder data, and every bridge states a
-// regulatory reason. Those reasons are emitted into the SBOM as
-// ``declassification_sites``: a machine-checkable record of exactly
-// where, and why, the program discloses sensitive data.
+// The audited secret -> public bridges for cardholder DATA AT REST and
+// for DISPLAY. Every bridge states a regulatory reason, emitted into
+// the SBOM as ``declassification_sites``: a machine-checkable record of
+// exactly where, and why, the program discloses sensitive data.
+//
+// Two further declassifications live in main.capa, at the points where
+// a derived value legitimately leaves the program: the authorization
+// decision and a PAN-blocklist hit (see main.print_decision and
+// main.process). They live there, not here, because a declassify only
+// breaks the secret-to-sink chain within the function it sits in: the
+// result of a helper called with a @secret argument is conservatively
+// re-tainted at the call site (whole-value granularity), so a
+// declassify is load-bearing only in the same function as the public
+// sink it feeds. mask.capa still owns the keyed PAN fingerprint
+// primitive (pan_fingerprint), but keeps its result @secret and lets
+// the caller declassify it at the sink.
 //
 // Everywhere else in the codebase a @secret value that reaches a
 // public sink (a log line, a network call) is a compile-time
@@ -33,16 +44,21 @@ pub fun mask_pan(pan: @secret String) -> String
 // Correlation-resistant fingerprint of a PAN for matching against
 // block / watch lists without storing or exposing the PAN. PCI DSS
 // allows comparison via keyed hashing with managed keys.
-pub fun pan_fingerprint(pan: @secret String, key: String) -> String
+//
+// This helper does NOT declassify: a keyed one-way fingerprint of a
+// @secret PAN is itself sensitive (it can confirm a guessed PAN, so it
+// is a partial oracle), and so it STAYS @secret. The declared @secret
+// return type carries that label across the call boundary to the
+// caller. The disclosure decision lives where the fingerprint is
+// actually used: main.process declassifies it, with a PCI reason, only
+// at the point where a blocklist hit is written to the public
+// fraud-alert log. That is what makes the declassify load-bearing,
+// instead of a no-op at a boundary that re-taints the value anyway.
+pub fun pan_fingerprint(pan: @secret String, key: String) -> @secret String
     // HMAC-SHA256 keyed by `key` over the PAN. capa_hash takes
     // (key, message): the managed key is the key, the @secret PAN is the
-    // message. The result is derived from a @secret, so it stays @secret
-    // (capa_hash is pure and the label flows through the argument) and
-    // the declassify below is required, not a no-op.
-    return declassify(
-        hmac_sha256_hex_utf8(key, pan),
-        reason: "PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible"
-    )
+    // message. The result derives from a @secret, so it is @secret.
+    return hmac_sha256_hex_utf8(key, pan)
 
 // The at-rest storable form of a credential: the salted slow-hash,
 // declassified for persistence. The plaintext credential never

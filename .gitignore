@@ -3,6 +3,7 @@ vendor/
 
 # Generated demo output (recreated by `capa --run main.capa`)
 audit_log.txt
+fraud_alerts.txt
 
 # Python bytecode (if anyone runs the transpiled code directly)
 __pycache__/

@@ -3375,7 +3375,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": 9,
-      "pos": "fraud.capa:37:1",
+      "pos": "fraud.capa:38:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -3419,7 +3419,7 @@
         {
           "kind": "fn",
           "callee": "Some",
-          "pos": "39:16",
+          "pos": "40:16",
           "args": [
             "FraudSignal { code: \"AMOUNT_HIGH\", description: \"amount ${...} at or above hi..."
           ],
@@ -3436,7 +3436,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": 9,
-      "pos": "fraud.capa:46:1",
+      "pos": "fraud.capa:47:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -3480,7 +3480,7 @@
         {
           "kind": "fn",
           "callee": "Some",
-          "pos": "48:16",
+          "pos": "49:16",
           "args": [
             "FraudSignal { code: \"VELOCITY\", description: \"${...} recent transactions exce..."
           ],
@@ -3497,7 +3497,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": 9,
-      "pos": "fraud.capa:55:1",
+      "pos": "fraud.capa:56:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -3541,7 +3541,7 @@
         {
           "kind": "method",
           "callee": "blocklist.contains",
-          "pos": "56:8",
+          "pos": "57:8",
           "args": [
             "tx.beneficiary"
           ],
@@ -3552,11 +3552,74 @@
         {
           "kind": "fn",
           "callee": "Some",
-          "pos": "57:16",
+          "pos": "58:16",
           "args": [
             "FraudSignal { code: \"SANCTIONS\", description: \"beneficiary is on the block / ..."
           ],
           "args_flow": [
+            null
+          ]
+        }
+      ],
+      "declassifications": []
+    },
+    {
+      "name": "pan_fingerprint_blocked",
+      "source_name": "pan_fingerprint_blocked",
+      "container": null,
+      "source_container": null,
+      "source_module_index": null,
+      "pos": "fraud.capa:81:5",
+      "is_pub": true,
+      "doc": null,
+      "params": [
+        {
+          "name": "fingerprint",
+          "type": "String",
+          "consuming": false,
+          "is_capability": false,
+          "is_linear": false
+        },
+        {
+          "name": "fp_blocklist",
+          "type": "List<String>",
+          "consuming": false,
+          "is_capability": false,
+          "is_linear": false
+        }
+      ],
+      "return_type": "Bool",
+      "declared_capabilities": [],
+      "transitively_reachable_capabilities": [],
+      "provably_excluded_capabilities": [
+        "Clock",
+        "Db",
+        "Env",
+        "Fs",
+        "Net",
+        "Proc",
+        "Random",
+        "Stdio",
+        "Unsafe"
+      ],
+      "linear_obligations": {
+        "consumes": [],
+        "produces_linear": false
+      },
+      "has_unsafe": false,
+      "constant_time": false,
+      "attributes": [],
+      "calls": [
+        {
+          "kind": "fn",
+          "callee": "strings_equal",
+          "pos": "84:12",
+          "args": [
+            "fingerprint",
+            "entry"
+          ],
+          "args_flow": [
+            null,
             null
           ]
         }
@@ -3569,7 +3632,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": 9,
-      "pos": "fraud.capa:64:1",
+      "pos": "fraud.capa:88:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -3613,7 +3676,7 @@
         {
           "kind": "fn",
           "callee": "Some",
-          "pos": "69:16",
+          "pos": "93:16",
           "args": [
             "FraudSignal { code: \"STRUCTURING\", description: \"amount just below the report..."
           ],
@@ -3630,7 +3693,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "fraud.capa:80:5",
+      "pos": "fraud.capa:104:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -3688,7 +3751,7 @@
         {
           "kind": "fn",
           "callee": "_capa_m9__rule_high_amount",
-          "pos": "87:11",
+          "pos": "111:11",
           "args": [
             "tx",
             "cfg.high_threshold_cents"
@@ -3701,7 +3764,7 @@
         {
           "kind": "method",
           "callee": "signals.push",
-          "pos": "88:20",
+          "pos": "112:20",
           "args": [
             "s"
           ],
@@ -3712,7 +3775,7 @@
         {
           "kind": "fn",
           "callee": "_capa_m9__rule_velocity",
-          "pos": "90:11",
+          "pos": "114:11",
           "args": [
             "recent_count",
             "cfg.velocity_limit"
@@ -3725,7 +3788,7 @@
         {
           "kind": "method",
           "callee": "signals.push",
-          "pos": "91:20",
+          "pos": "115:20",
           "args": [
             "s"
           ],
@@ -3736,7 +3799,7 @@
         {
           "kind": "fn",
           "callee": "_capa_m9__rule_sanctions",
-          "pos": "93:11",
+          "pos": "117:11",
           "args": [
             "tx",
             "blocklist"
@@ -3749,7 +3812,7 @@
         {
           "kind": "method",
           "callee": "signals.push",
-          "pos": "94:20",
+          "pos": "118:20",
           "args": [
             "s"
           ],
@@ -3760,7 +3823,7 @@
         {
           "kind": "fn",
           "callee": "_capa_m9__rule_structuring",
-          "pos": "96:11",
+          "pos": "120:11",
           "args": [
             "tx",
             "cfg.report_threshold_cents"
@@ -3773,7 +3836,7 @@
         {
           "kind": "method",
           "callee": "signals.push",
-          "pos": "97:20",
+          "pos": "121:20",
           "args": [
             "s"
           ],
@@ -3784,7 +3847,7 @@
         {
           "kind": "fn",
           "callee": "max_risk",
-          "pos": "102:15",
+          "pos": "126:15",
           "args": [
             "top",
             "s.risk"
@@ -3803,7 +3866,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "fraud.capa:109:5",
+      "pos": "fraud.capa:133:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -3840,7 +3903,7 @@
         {
           "kind": "method",
           "callee": "a.signals.is_empty",
-          "pos": "110:8",
+          "pos": "134:8",
           "args": [],
           "args_flow": []
         }
@@ -3853,7 +3916,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "fraud.capa:119:5",
+      "pos": "fraud.capa:143:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -3890,7 +3953,7 @@
         {
           "kind": "fn",
           "callee": "Declined",
-          "pos": "121:21",
+          "pos": "145:21",
           "args": [
             "\"critical risk: ${...}\""
           ],
@@ -3901,7 +3964,7 @@
         {
           "kind": "fn",
           "callee": "explain",
-          "pos": "121:48",
+          "pos": "145:48",
           "args": [
             "a"
           ],
@@ -3912,7 +3975,7 @@
         {
           "kind": "fn",
           "callee": "Review",
-          "pos": "122:21",
+          "pos": "146:21",
           "args": [
             "\"high risk: ${...}\""
           ],
@@ -3923,7 +3986,7 @@
         {
           "kind": "fn",
           "callee": "explain",
-          "pos": "122:42",
+          "pos": "146:42",
           "args": [
             "a"
           ],
@@ -3934,7 +3997,7 @@
         {
           "kind": "fn",
           "callee": "Review",
-          "pos": "123:21",
+          "pos": "147:21",
           "args": [
             "\"medium risk: ${...}\""
           ],
@@ -3945,7 +4008,7 @@
         {
           "kind": "fn",
           "callee": "explain",
-          "pos": "123:44",
+          "pos": "147:44",
           "args": [
             "a"
           ],
@@ -3962,7 +4025,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "mask.capa:20:5",
+      "pos": "mask.capa:31:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -3999,14 +4062,14 @@
         {
           "kind": "method",
           "callee": "pan.length",
-          "pos": "21:13",
+          "pos": "32:13",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "method",
           "callee": "pan.substring",
-          "pos": "27:17",
+          "pos": "38:17",
           "args": [
             "n - 4",
             "n"
@@ -4019,7 +4082,7 @@
         {
           "kind": "fn",
           "callee": "declassify",
-          "pos": "28:12",
+          "pos": "39:12",
           "args": [
             "\"**** **** **** ${...}\"",
             "\"PCI DSS 3.4: display only the last four PAN digits\""
@@ -4034,7 +4097,7 @@
         {
           "reason": "PCI DSS 3.4: display only the last four PAN digits",
           "value": "\"**** **** **** ${...}\"",
-          "pos": "28:12"
+          "pos": "39:12"
         }
       ]
     },
@@ -4044,7 +4107,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "mask.capa:36:5",
+      "pos": "mask.capa:57:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -4087,21 +4150,8 @@
       "calls": [
         {
           "kind": "fn",
-          "callee": "declassify",
-          "pos": "42:12",
-          "args": [
-            "hmac_sha256_hex_utf8(key, pan)",
-            "\"PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible\""
-          ],
-          "args_flow": [
-            null,
-            null
-          ]
-        },
-        {
-          "kind": "fn",
           "callee": "hmac_sha256_hex_utf8",
-          "pos": "43:9",
+          "pos": "61:12",
           "args": [
             "key",
             "pan"
@@ -4112,13 +4162,7 @@
           ]
         }
       ],
-      "declassifications": [
-        {
-          "reason": "PCI DSS 3.4: keyed one-way fingerprint for list matching, not reversible",
-          "value": "hmac_sha256_hex_utf8(key, pan)",
-          "pos": "42:12"
-        }
-      ]
+      "declassifications": []
     },
     {
       "name": "storable_credential",
@@ -4126,7 +4170,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "mask.capa:50:5",
+      "pos": "mask.capa:66:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -4170,7 +4214,7 @@
         {
           "kind": "fn",
           "callee": "declassify",
-          "pos": "51:12",
+          "pos": "67:12",
           "args": [
             "slow_hash(secret, salt)",
             "\"credential stored only as a salted slow-hash, never in clear\""
@@ -4183,7 +4227,7 @@
         {
           "kind": "fn",
           "callee": "slow_hash",
-          "pos": "52:9",
+          "pos": "68:9",
           "args": [
             "secret",
             "salt"
@@ -4198,7 +4242,7 @@
         {
           "reason": "credential stored only as a salted slow-hash, never in clear",
           "value": "slow_hash(secret, salt)",
-          "pos": "51:12"
+          "pos": "67:12"
         }
       ]
     },
@@ -4208,7 +4252,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "mask.capa:58:5",
+      "pos": "mask.capa:74:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -4252,7 +4296,7 @@
         {
           "kind": "fn",
           "callee": "declassify",
-          "pos": "59:12",
+          "pos": "75:12",
           "args": [
             "encrypt(pan, data_key)",
             "\"PCI DSS 3.4: PAN stored only as AES ciphertext under a KMS data key\""
@@ -4265,7 +4309,7 @@
         {
           "kind": "fn",
           "callee": "encrypt",
-          "pos": "60:9",
+          "pos": "76:9",
           "args": [
             "pan",
             "data_key"
@@ -4280,7 +4324,7 @@
         {
           "reason": "PCI DSS 3.4: PAN stored only as AES ciphertext under a KMS data key",
           "value": "encrypt(pan, data_key)",
-          "pos": "59:12"
+          "pos": "75:12"
         }
       ]
     },
@@ -4615,10 +4659,17 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "main.capa:38:5",
+      "pos": "main.capa:51:1",
       "is_pub": true,
       "doc": null,
       "params": [
+        {
+          "name": "fs",
+          "type": "Fs",
+          "consuming": false,
+          "is_capability": true,
+          "is_linear": false
+        },
         {
           "name": "card",
           "type": "Card",
@@ -4669,6 +4720,20 @@
           "is_linear": false
         },
         {
+          "name": "fp_key",
+          "type": "String",
+          "consuming": false,
+          "is_capability": false,
+          "is_linear": false
+        },
+        {
+          "name": "fp_blocklist",
+          "type": "List<String>",
+          "consuming": false,
+          "is_capability": false,
+          "is_linear": false
+        },
+        {
           "name": "recent_count",
           "type": "Int",
           "consuming": false,
@@ -4705,13 +4770,16 @@
         }
       ],
       "return_type": "Decision",
-      "declared_capabilities": [],
-      "transitively_reachable_capabilities": [],
+      "declared_capabilities": [
+        "Fs"
+      ],
+      "transitively_reachable_capabilities": [
+        "Fs"
+      ],
       "provably_excluded_capabilities": [
         "Clock",
         "Db",
         "Env",
-        "Fs",
         "Net",
         "Proc",
         "Random",
@@ -4724,12 +4792,17 @@
       },
       "has_unsafe": false,
       "constant_time": false,
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "strict_ifc",
+          "args": {}
+        }
+      ],
       "calls": [
         {
           "kind": "fn",
           "callee": "mask_pan",
-          "pos": "52:18",
+          "pos": "69:18",
           "args": [
             "card.pan"
           ],
@@ -4739,8 +4812,21 @@
         },
         {
           "kind": "fn",
+          "callee": "pan_fingerprint",
+          "pos": "75:18",
+          "args": [
+            "card.pan",
+            "fp_key"
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
           "callee": "evaluate_exemption",
-          "pos": "55:21",
+          "pos": "78:21",
           "args": [
             "tx",
             "3000",
@@ -4755,7 +4841,7 @@
         {
           "kind": "fn",
           "callee": "requires_sca",
-          "pos": "56:8",
+          "pos": "79:8",
           "args": [
             "exemption"
           ],
@@ -4766,7 +4852,7 @@
         {
           "kind": "fn",
           "callee": "sca_satisfied",
-          "pos": "57:16",
+          "pos": "80:16",
           "args": [
             "knowledge_ok",
             "possession_ok",
@@ -4781,7 +4867,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "58:13",
+          "pos": "81:13",
           "args": [
             "audit_event(\"AUTH_FAILED\", \"web\", \"card ${...}: SCA not satisfied\")"
           ],
@@ -4792,7 +4878,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "58:24",
+          "pos": "81:24",
           "args": [
             "\"AUTH_FAILED\"",
             "\"web\"",
@@ -4807,7 +4893,7 @@
         {
           "kind": "fn",
           "callee": "Declined",
-          "pos": "59:20",
+          "pos": "82:20",
           "args": [
             "\"strong authentication required\""
           ],
@@ -4818,7 +4904,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "60:5",
+          "pos": "83:5",
           "args": [
             "audit_event(\"AUTH_OK\", \"web\", \"card ${...}; exemption=${...}\")"
           ],
@@ -4829,7 +4915,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "60:16",
+          "pos": "83:16",
           "args": [
             "\"AUTH_OK\"",
             "\"web\"",
@@ -4844,7 +4930,7 @@
         {
           "kind": "fn",
           "callee": "exemption_reason",
-          "pos": "60:75",
+          "pos": "83:75",
           "args": [
             "exemption"
           ],
@@ -4855,7 +4941,7 @@
         {
           "kind": "fn",
           "callee": "validate_structure",
-          "pos": "63:11",
+          "pos": "86:11",
           "args": [
             "tx"
           ],
@@ -4866,7 +4952,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "66:13",
+          "pos": "89:13",
           "args": [
             "audit_event(\"VALIDATION_FAILED\", \"web\", \"card ${...}: ${...}\")"
           ],
@@ -4877,7 +4963,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "66:24",
+          "pos": "89:24",
           "args": [
             "\"VALIDATION_FAILED\"",
             "\"web\"",
@@ -4892,7 +4978,7 @@
         {
           "kind": "fn",
           "callee": "Declined",
-          "pos": "67:20",
+          "pos": "90:20",
           "args": [
             "\"invalid transaction: ${...}\""
           ],
@@ -4903,7 +4989,7 @@
         {
           "kind": "fn",
           "callee": "verify_dynamic_link",
-          "pos": "71:12",
+          "pos": "94:12",
           "args": [
             "tx",
             "auth_code",
@@ -4918,7 +5004,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "72:9",
+          "pos": "95:9",
           "args": [
             "audit_event(\"DYNLINK_FAILED\", \"web\", \"card ${...}: amount/beneficiary changed..."
           ],
@@ -4929,7 +5015,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "72:20",
+          "pos": "95:20",
           "args": [
             "\"DYNLINK_FAILED\"",
             "\"web\"",
@@ -4944,7 +5030,7 @@
         {
           "kind": "fn",
           "callee": "Declined",
-          "pos": "73:16",
+          "pos": "96:16",
           "args": [
             "\"authorization no longer matches the transaction\""
           ],
@@ -4955,7 +5041,7 @@
         {
           "kind": "fn",
           "callee": "claim",
-          "pos": "76:12",
+          "pos": "99:12",
           "args": [
             "seen",
             "idempotency_key(tx)"
@@ -4968,7 +5054,7 @@
         {
           "kind": "fn",
           "callee": "idempotency_key",
-          "pos": "76:33",
+          "pos": "99:33",
           "args": [
             "tx"
           ],
@@ -4979,7 +5065,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "77:9",
+          "pos": "100:9",
           "args": [
             "audit_event(\"DUPLICATE\", \"web\", \"card ${...}: duplicate transaction ${...}\")"
           ],
@@ -4990,7 +5076,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "77:20",
+          "pos": "100:20",
           "args": [
             "\"DUPLICATE\"",
             "\"web\"",
@@ -5005,7 +5091,7 @@
         {
           "kind": "fn",
           "callee": "Declined",
-          "pos": "78:16",
+          "pos": "101:16",
           "args": [
             "\"duplicate transaction\""
           ],
@@ -5015,8 +5101,97 @@
         },
         {
           "kind": "fn",
+          "callee": "declassify",
+          "pos": "119:24",
+          "args": [
+            "pan_fingerprint_blocked(pan_fp, fp_blocklist)",
+            "\"PCI DSS 3.4: disclosing that a transaction's PAN matched the blocklist drive..."
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "pan_fingerprint_blocked",
+          "pos": "120:9",
+          "args": [
+            "pan_fp",
+            "fp_blocklist"
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "declassify",
+          "pos": "124:28",
+          "args": [
+            "pan_fp",
+            "\"PCI DSS 3.4: a matched PAN blocklist fingerprint is recorded in the fraud-al..."
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "method",
+          "callee": "fs.write",
+          "pos": "129:15",
+          "args": [
+            "\"fraud_alerts.txt\"",
+            "alert"
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "method",
+          "callee": "trail.push",
+          "pos": "132:9",
+          "args": [
+            "audit_event(\"BLOCKLIST\", \"web\", \"card ${...}: PAN on blocklist (fingerprint $..."
+          ],
+          "args_flow": [
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "audit_event",
+          "pos": "132:20",
+          "args": [
+            "\"BLOCKLIST\"",
+            "\"web\"",
+            "\"card ${...}: PAN on blocklist (fingerprint ${...})\""
+          ],
+          "args_flow": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "Declined",
+          "pos": "133:16",
+          "args": [
+            "\"PAN on blocklist\""
+          ],
+          "args_flow": [
+            null
+          ]
+        },
+        {
+          "kind": "fn",
           "callee": "assess",
-          "pos": "81:22",
+          "pos": "136:22",
           "args": [
             "tx",
             "recent_count",
@@ -5033,7 +5208,7 @@
         {
           "kind": "fn",
           "callee": "risk_to_decision",
-          "pos": "82:20",
+          "pos": "137:20",
           "args": [
             "assessment"
           ],
@@ -5044,7 +5219,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "86:23",
+          "pos": "141:23",
           "args": [
             "audit_event(\"APPROVED\", \"web\", \"card ${...}; amount=${...} ${...}\")"
           ],
@@ -5055,7 +5230,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "86:34",
+          "pos": "141:34",
           "args": [
             "\"APPROVED\"",
             "\"web\"",
@@ -5070,7 +5245,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "87:23",
+          "pos": "142:23",
           "args": [
             "audit_event(\"REVIEW\", \"web\", \"card ${...}: ${...}\")"
           ],
@@ -5081,7 +5256,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "87:34",
+          "pos": "142:34",
           "args": [
             "\"REVIEW\"",
             "\"web\"",
@@ -5096,7 +5271,7 @@
         {
           "kind": "method",
           "callee": "trail.push",
-          "pos": "88:24",
+          "pos": "143:24",
           "args": [
             "audit_event(\"DECLINED\", \"web\", \"card ${...}: ${...}\")"
           ],
@@ -5107,7 +5282,7 @@
         {
           "kind": "fn",
           "callee": "audit_event",
-          "pos": "88:35",
+          "pos": "143:35",
           "args": [
             "\"DECLINED\"",
             "\"web\"",
@@ -5120,7 +5295,18 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [
+        {
+          "reason": "PCI DSS 3.4: disclosing that a transaction's PAN matched the blocklist drives the public refusal decision",
+          "value": "pan_fingerprint_blocked(pan_fp, fp_blocklist)",
+          "pos": "119:24"
+        },
+        {
+          "reason": "PCI DSS 3.4: a matched PAN blocklist fingerprint is recorded in the fraud-alert log; it is a keyed one-way value, not the PAN",
+          "value": "pan_fp",
+          "pos": "124:28"
+        }
+      ]
     },
     {
       "name": "print_decision",
@@ -5128,7 +5314,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "main.capa:102:1",
+      "pos": "main.capa:157:1",
       "is_pub": false,
       "doc": null,
       "params": [
@@ -5182,7 +5368,7 @@
         {
           "kind": "fn",
           "callee": "declassify",
-          "pos": "103:19",
+          "pos": "158:19",
           "args": [
             "d",
             "\"authorization decision is the pipeline's public output: approve/decline/revi..."
@@ -5195,7 +5381,7 @@
         {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "111:5",
+          "pos": "166:5",
           "args": [
             "\"${...}: ${...}\""
           ],
@@ -5208,7 +5394,7 @@
         {
           "reason": "authorization decision is the pipeline's public output: approve/decline/review plus a rule-derived reason, no cardholder data",
           "value": "d",
-          "pos": "103:19"
+          "pos": "158:19"
         }
       ]
     },
@@ -5218,7 +5404,7 @@
       "container": null,
       "source_container": null,
       "source_module_index": null,
-      "pos": "main.capa:113:5",
+      "pos": "main.capa:168:5",
       "is_pub": true,
       "doc": null,
       "params": [
@@ -5266,7 +5452,7 @@
         {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "114:5",
+          "pos": "169:5",
           "args": [
             "\"== capa_paymentguard demo ==\""
           ],
@@ -5277,14 +5463,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "137:25",
+          "pos": "205:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "144:18",
+          "pos": "212:18",
           "args": [
             "tx_a",
             "nonce"
@@ -5297,15 +5483,16 @@
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "145:18",
+          "pos": "213:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "146:17",
+          "pos": "214:17",
           "args": [
+            "fs",
             "card",
             "tx_a",
             "true",
@@ -5313,6 +5500,8 @@
             "false",
             "seen_a",
             "blocklist",
+            "fp_key",
+            "fp_blocklist",
             "1",
             "cfg",
             "code_a",
@@ -5331,13 +5520,16 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
           ]
         },
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "147:5",
+          "pos": "215:5",
           "args": [
             "stdio",
             "\"Scenario A (small purchase)\"",
@@ -5352,14 +5544,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "152:25",
+          "pos": "220:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "159:18",
+          "pos": "227:18",
           "args": [
             "tx_b",
             "nonce"
@@ -5372,15 +5564,16 @@
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "160:18",
+          "pos": "228:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "161:17",
+          "pos": "229:17",
           "args": [
+            "fs",
             "card",
             "tx_b",
             "true",
@@ -5388,6 +5581,8 @@
             "false",
             "seen_b",
             "blocklist",
+            "fp_key",
+            "fp_blocklist",
             "1",
             "cfg",
             "code_b",
@@ -5406,13 +5601,16 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
           ]
         },
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "162:5",
+          "pos": "230:5",
           "args": [
             "stdio",
             "\"Scenario B (sanctioned payee)\"",
@@ -5427,14 +5625,14 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "167:25",
+          "pos": "235:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "authorization_code",
-          "pos": "174:18",
+          "pos": "242:18",
           "args": [
             "tx_c",
             "nonce"
@@ -5447,22 +5645,23 @@
         {
           "kind": "fn",
           "callee": "demo_now",
-          "pos": "177:25",
+          "pos": "245:25",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "new_set",
-          "pos": "184:18",
+          "pos": "252:18",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "fn",
           "callee": "process",
-          "pos": "185:17",
+          "pos": "253:17",
           "args": [
+            "fs",
             "card",
             "tx_c_tampered",
             "true",
@@ -5470,6 +5669,8 @@
             "false",
             "seen_c",
             "blocklist",
+            "fp_key",
+            "fp_blocklist",
             "1",
             "cfg",
             "code_c",
@@ -5488,13 +5689,16 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
           ]
         },
         {
           "kind": "fn",
           "callee": "print_decision",
-          "pos": "186:5",
+          "pos": "254:5",
           "args": [
             "stdio",
             "\"Scenario C (tampered amount)\"",
@@ -5508,8 +5712,89 @@
         },
         {
           "kind": "fn",
+          "callee": "demo_now",
+          "pos": "273:25",
+          "args": [],
+          "args_flow": []
+        },
+        {
+          "kind": "fn",
+          "callee": "authorization_code",
+          "pos": "280:18",
+          "args": [
+            "tx_d",
+            "nonce"
+          ],
+          "args_flow": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "new_set",
+          "pos": "281:18",
+          "args": [],
+          "args_flow": []
+        },
+        {
+          "kind": "fn",
+          "callee": "process",
+          "pos": "282:17",
+          "args": [
+            "fs",
+            "blocked_card",
+            "tx_d",
+            "true",
+            "true",
+            "false",
+            "seen_d",
+            "blocklist",
+            "fp_key",
+            "fp_blocklist",
+            "1",
+            "cfg",
+            "code_d",
+            "nonce",
+            "trail"
+          ],
+          "args_flow": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
+          "callee": "print_decision",
+          "pos": "283:5",
+          "args": [
+            "stdio",
+            "\"Scenario D (blocklisted PAN)\"",
+            "dec_d"
+          ],
+          "args_flow": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "fn",
           "callee": "write_log",
-          "pos": "191:11",
+          "pos": "288:11",
           "args": [
             "fs",
             "\"audit_log.txt\"",
@@ -5524,7 +5809,7 @@
         {
           "kind": "method",
           "callee": "stdio.println",
-          "pos": "192:21",
+          "pos": "289:21",
           "args": [
             "\"audit trail written to audit_log.txt (${...} events)\""
           ],
@@ -5535,14 +5820,14 @@
         {
           "kind": "method",
           "callee": "trail.length",
-          "pos": "192:76",
+          "pos": "289:76",
           "args": [],
           "args_flow": []
         },
         {
           "kind": "method",
           "callee": "stdio.eprintln",
-          "pos": "193:21",
+          "pos": "290:21",
           "args": [
             "\"failed to write audit trail\""
           ],
@@ -5555,11 +5840,11 @@
     }
   ],
   "summary": {
-    "total_functions": 69,
-    "functions_with_capabilities": 3,
-    "functions_with_attributes": 7,
+    "total_functions": 70,
+    "functions_with_capabilities": 4,
+    "functions_with_attributes": 8,
     "functions_crossing_unsafe": 0,
-    "declassification_sites": 5,
+    "declassification_sites": 6,
     "protocol_states": 0
   }
 }

@@ -12,6 +12,7 @@
 // audit line by line.
 
 import domain
+import capa_hash.verify
 
 pub type FraudSignal {
     code: String,
@@ -60,6 +61,29 @@ fun rule_sanctions(tx: Transaction, blocklist: List<String>) -> Option<FraudSign
             risk: Critical
         })
     return None
+
+// PCI DSS 3.4 PAN blocklist matching. The watchlist holds keyed,
+// one-way fingerprints of PANs known to be compromised or stolen, not
+// the PANs themselves: public material a regulator can ship. A
+// transaction's PAN fingerprint is compared against every entry in
+// CONSTANT TIME via capa_hash.verify.strings_equal: an ordinary `==`
+// over a tag is a timing side channel (CWE-208), because it
+// short-circuits at the first differing byte. Every entry is checked
+// with no early return on a mismatch, so the running time leaks
+// nothing about how close a non-match was.
+//
+// The fingerprint stays @secret here (mask.pan_fingerprint keeps it
+// secret): a keyed PAN fingerprint is sensitive. Comparing a @secret
+// against the public watchlist is fine, no value leaves the program in
+// this function; the resulting Bool merely steers the caller's refusal.
+// The actual disclosure (logging which fingerprint matched) is
+// declassified by the caller at the audit sink. See main.process.
+pub fun pan_fingerprint_blocked(fingerprint: @secret String, fp_blocklist: List<String>) -> Bool
+    var hit = false
+    for entry in fp_blocklist
+        if strings_equal(fingerprint, entry)
+            hit = true
+    return hit
 
 fun rule_structuring(tx: Transaction, report_threshold_cents: Int) -> Option<FraudSignal>
     // Amounts sitting just below a reporting threshold are a classic

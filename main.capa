@@ -35,7 +35,22 @@ fun audit_event(action: String, source: String, detail: String) -> AuditEvent
 // stage to ``trail``. Takes the card by ``@secret`` binding so the
 // cardholder data is in the secret domain throughout; the only data
 // that ever reaches the (public) audit trail is masked via mask.capa.
+//
+// @strict_ifc makes every @secret-reaches-public-sink in this function
+// a hard error, not a warning, and also catches implicit (control-flow)
+// leaks. The PAN-blocklist step below holds a @secret PAN fingerprint,
+// compares it against the public watchlist, and on a hit writes a fraud
+// alert via Fs.write. Both the match boolean and the matched fingerprint
+// are declassified there, with PCI reasons. Those declassifies are
+// load-bearing: delete either and capa --check hard-fails (a @secret
+// value reaches Fs.write, or Fs.write runs under secret control flow).
+// They sit here, at the sink, rather than inside mask.pan_fingerprint,
+// because a declassify breaks the secret-to-sink chain only in its own
+// function; the fingerprint helper keeps its result @secret so the
+// disclosure decision is taken and audited where the value escapes.
+@strict_ifc()
 pub fun process(
+    fs: Fs,
     card: @secret Card,
     tx: Transaction,
     knowledge_ok: Bool,
@@ -43,6 +58,8 @@ pub fun process(
     inherence_ok: Bool,
     seen: Set<String>,
     blocklist: List<String>,
+    fp_key: String,
+    fp_blocklist: List<String>,
     recent_count: Int,
     cfg: FraudConfig,
     auth_code: String,
@@ -50,6 +67,12 @@ pub fun process(
     trail: List<AuditEvent>
 ) -> Decision
     let masked = mask.mask_pan(card.pan)
+
+    // PCI DSS 3.4 PAN blocklist fingerprint. A keyed one-way fingerprint
+    // of the @secret PAN, itself @secret (mask.pan_fingerprint keeps the
+    // label). It is matched against the public blocklist below; only a
+    // recorded hit is declassified, at the audit sink.
+    let pan_fp = mask.pan_fingerprint(card.pan, fp_key)
 
     // (1) Strong Customer Authentication: at least two factor classes.
     let exemption = auth.evaluate_exemption(tx, 3000, false)
@@ -77,11 +100,43 @@ pub fun process(
         trail.push(audit_event("DUPLICATE", "web", "card ${masked}: duplicate transaction ${tx.id}"))
         return Declined("duplicate transaction")
 
-    // (5) Fraud / AML risk assessment (no capabilities, explainable).
+    // (5) PCI DSS 3.4 PAN blocklist. ``pan_fp`` is the @secret keyed
+    //     fingerprint of the @secret PAN. It is compared, in constant
+    //     time (see fraud.capa), against the public watchlist. The match
+    //     RESULT is derived from the secret, so it is @secret too: that
+    //     a given PAN is on the blocklist is itself sensitive. Disclosing
+    //     it is a deliberate, audited decision, so the boolean is
+    //     declassified with a PCI reason. Branching then runs under
+    //     PUBLIC control flow, and the alert line records the matched
+    //     fingerprint, also declassified (a keyed one-way value, not the
+    //     PAN), through the public Fs.write sink.
+    //
+    //     Both declassifies are load-bearing under @strict_ifc: remove
+    //     the boolean declassify and Fs.write runs under secret control
+    //     flow (an implicit-flow leak); remove the fingerprint declassify
+    //     and a @secret value reaches Fs.write directly. Either way
+    //     capa --check hard-fails.
+    let on_blocklist = declassify(
+        fraud.pan_fingerprint_blocked(pan_fp, fp_blocklist),
+        reason: "PCI DSS 3.4: disclosing that a transaction's PAN matched the blocklist drives the public refusal decision"
+    )
+    if on_blocklist
+        let disclosed_fp = declassify(
+            pan_fp,
+            reason: "PCI DSS 3.4: a matched PAN blocklist fingerprint is recorded in the fraud-alert log; it is a keyed one-way value, not the PAN"
+        )
+        let alert = "ALERT BLOCKLIST tx=${tx.id} fingerprint=${disclosed_fp}\n"
+        match fs.write("fraud_alerts.txt", alert)
+            Ok(_)  -> ()
+            Err(_) -> ()
+        trail.push(audit_event("BLOCKLIST", "web", "card ${masked}: PAN on blocklist (fingerprint ${disclosed_fp})"))
+        return Declined("PAN on blocklist")
+
+    // (6) Fraud / AML risk assessment (no capabilities, explainable).
     let assessment = fraud.assess(tx, recent_count, blocklist, cfg)
     let decision = fraud.risk_to_decision(assessment)
 
-    // (6) Record the decision with its justification.
+    // (7) Record the decision with its justification.
     match decision
         Approved   -> trail.push(audit_event("APPROVED", "web", "card ${masked}; amount=${tx.amount_cents} ${tx.currency}"))
         Review(r)  -> trail.push(audit_event("REVIEW", "web", "card ${masked}: ${r}"))
@@ -129,6 +184,19 @@ pub fun main(stdio: Stdio, fs: Fs)
     let blocklist: List<String> = ["IBAN-SANCTIONED-001"]
     let nonce = "nonce-2026-0001"
 
+    // PCI DSS 3.4 PAN blocklist: keyed one-way fingerprints of PANs
+    // known to be compromised. This is PUBLIC material (no PAN is
+    // recoverable from a fingerprint), pre-computed under the managed
+    // fingerprint key with HMAC-SHA256. A transaction whose PAN
+    // fingerprints to one of these is refused. The entries below are the
+    // fingerprints of the two standard test PANs 4012888888881881 and
+    // 5105105105105100 under "pan-fingerprint-key".
+    let fp_key = "pan-fingerprint-key"
+    let fp_blocklist: List<String> = [
+        "b13e1909f770d473a425335c8d1dd122aa1c0f2166c3110e7ebfa6f5b9cf96dd",
+        "bcce5bb6d143f732a6908bcbbb36fc55fe2a5255cf4ae98553202eb1a9467b8c"
+    ]
+
     var trail: List<AuditEvent> = []
 
     // --- Scenario A: a clean, low-risk purchase ---
@@ -143,7 +211,7 @@ pub fun main(stdio: Stdio, fs: Fs)
     }
     let code_a = validate.authorization_code(tx_a, nonce)
     let seen_a = new_set()
-    let dec_a = process(card, tx_a, true, true, false, seen_a, blocklist, 1, cfg, code_a, nonce, trail)
+    let dec_a = process(fs, card, tx_a, true, true, false, seen_a, blocklist, fp_key, fp_blocklist, 1, cfg, code_a, nonce, trail)
     print_decision(stdio, "Scenario A (small purchase)", dec_a)
 
     // --- Scenario B: a high-value transfer to a sanctioned account ---
@@ -158,7 +226,7 @@ pub fun main(stdio: Stdio, fs: Fs)
     }
     let code_b = validate.authorization_code(tx_b, nonce)
     let seen_b = new_set()
-    let dec_b = process(card, tx_b, true, true, false, seen_b, blocklist, 1, cfg, code_b, nonce, trail)
+    let dec_b = process(fs, card, tx_b, true, true, false, seen_b, blocklist, fp_key, fp_blocklist, 1, cfg, code_b, nonce, trail)
     print_decision(stdio, "Scenario B (sanctioned payee)", dec_b)
 
     // --- Scenario C: tampered amount after authorization ---
@@ -182,8 +250,37 @@ pub fun main(stdio: Stdio, fs: Fs)
         kind: "card"
     }
     let seen_c = new_set()
-    let dec_c = process(card, tx_c_tampered, true, true, false, seen_c, blocklist, 1, cfg, code_c, nonce, trail)
+    let dec_c = process(fs, card, tx_c_tampered, true, true, false, seen_c, blocklist, fp_key, fp_blocklist, 1, cfg, code_c, nonce, trail)
     print_decision(stdio, "Scenario C (tampered amount)", dec_c)
+
+    // --- Scenario D: a card whose PAN is on the PCI blocklist ---
+    // Same clean, low-value purchase as A, but the cardholder presents
+    // a known-compromised PAN. Every structural check passes; the
+    // refusal comes purely from the PAN fingerprint matching a
+    // blocklist entry. This is the path that makes the declassify in
+    // mask.pan_fingerprint load-bearing: the @secret PAN's fingerprint
+    // must cross into the public domain to be matched and the refusal
+    // logged.
+    let blocked_card: @secret Card = Card {
+        pan: "4012888888881881",
+        cvv: "456",
+        exp_month: 11,
+        exp_year: 2029,
+        holder: "MALLORY EXAMPLE"
+    }
+    let tx_d = Transaction {
+        id: "tx-1004",
+        timestamp_secs: demo_now(),
+        amount_cents: 3500,
+        currency: "EUR",
+        customer_id: "cust-mallory",
+        beneficiary: "IBAN-MERCHANT-SHOP",
+        kind: "card"
+    }
+    let code_d = validate.authorization_code(tx_d, nonce)
+    let seen_d = new_set()
+    let dec_d = process(fs, blocked_card, tx_d, true, true, false, seen_d, blocklist, fp_key, fp_blocklist, 1, cfg, code_d, nonce, trail)
+    print_decision(stdio, "Scenario D (blocklisted PAN)", dec_d)
 
     // Persist the tamper-evident audit trail. The content is public by
     // construction: every detail line was masked through mask.capa, so

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b02ccbb4-cbe8-5e7e-8bdd-9f4c9ece9dc1",
+  "serialNumber": "urn:uuid:7634ad69-9637-5961-8e92-3193ed66ba62",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-13T19:41:24Z",
+    "timestamp": "2026-06-13T20:17:10Z",
     "tools": {
       "components": [
         {
@@ -31,15 +31,15 @@
       },
       {
         "name": "capa:summary:total_functions",
-        "value": "69"
+        "value": "70"
       },
       {
         "name": "capa:summary:functions_with_capabilities",
-        "value": "3"
+        "value": "4"
       },
       {
         "name": "capa:summary:functions_with_attributes",
-        "value": "7"
+        "value": "8"
       },
       {
         "name": "capa:summary:functions_crossing_unsafe",
@@ -4020,7 +4020,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:37:1"
+          "value": "fraud.capa:38:1"
         },
         {
           "name": "capa:return_type",
@@ -4100,7 +4100,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:46:1"
+          "value": "fraud.capa:47:1"
         },
         {
           "name": "capa:return_type",
@@ -4180,7 +4180,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:55:1"
+          "value": "fraud.capa:56:1"
         },
         {
           "name": "capa:return_type",
@@ -4245,6 +4245,82 @@
       ]
     },
     {
+      "bom-ref": "capa:fn:main.capa:pan_fingerprint_blocked",
+      "type": "library",
+      "name": "pan_fingerprint_blocked",
+      "scope": "required",
+      "supplier": {
+        "name": "capa-build"
+      },
+      "licenses": [],
+      "properties": [
+        {
+          "name": "capa:kind",
+          "value": "function"
+        },
+        {
+          "name": "capa:pos",
+          "value": "fraud.capa:81:5"
+        },
+        {
+          "name": "capa:return_type",
+          "value": "Bool"
+        },
+        {
+          "name": "capa:has_unsafe",
+          "value": "false"
+        },
+        {
+          "name": "capa:is_pub",
+          "value": "true"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Clock"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Db"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Env"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Net"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Proc"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Stdio"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "fingerprint: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "fp_blocklist: List<String>"
+        }
+      ]
+    },
+    {
       "bom-ref": "capa:fn:main.capa:_capa_m9__rule_structuring",
       "type": "library",
       "name": "rule_structuring",
@@ -4260,7 +4336,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:64:1"
+          "value": "fraud.capa:88:1"
         },
         {
           "name": "capa:return_type",
@@ -4340,7 +4416,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:80:5"
+          "value": "fraud.capa:104:5"
         },
         {
           "name": "capa:return_type",
@@ -4424,7 +4500,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:109:5"
+          "value": "fraud.capa:133:5"
         },
         {
           "name": "capa:return_type",
@@ -4496,7 +4572,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "fraud.capa:119:5"
+          "value": "fraud.capa:143:5"
         },
         {
           "name": "capa:return_type",
@@ -4568,7 +4644,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "mask.capa:20:5"
+          "value": "mask.capa:31:5"
         },
         {
           "name": "capa:return_type",
@@ -4640,7 +4716,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "mask.capa:36:5"
+          "value": "mask.capa:57:5"
         },
         {
           "name": "capa:return_type",
@@ -4716,7 +4792,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "mask.capa:50:5"
+          "value": "mask.capa:66:5"
         },
         {
           "name": "capa:return_type",
@@ -4792,7 +4868,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "mask.capa:58:5"
+          "value": "mask.capa:74:5"
         },
         {
           "name": "capa:return_type",
@@ -5248,7 +5324,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:38:5"
+          "value": "main.capa:51:1"
         },
         {
           "name": "capa:return_type",
@@ -5263,6 +5339,14 @@
           "value": "true"
         },
         {
+          "name": "capa:declared_capability",
+          "value": "Fs"
+        },
+        {
+          "name": "capa:transitively_reachable_capability",
+          "value": "Fs"
+        },
+        {
           "name": "capa:provably_excluded_capability",
           "value": "Clock"
         },
@@ -5273,10 +5357,6 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Env"
-        },
-        {
-          "name": "capa:provably_excluded_capability",
-          "value": "Fs"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -5297,6 +5377,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Unsafe"
+        },
+        {
+          "name": "capa:param",
+          "value": "fs: Fs [cap]"
         },
         {
           "name": "capa:param",
@@ -5328,6 +5412,14 @@
         },
         {
           "name": "capa:param",
+          "value": "fp_key: String"
+        },
+        {
+          "name": "capa:param",
+          "value": "fp_blocklist: List<String>"
+        },
+        {
+          "name": "capa:param",
           "value": "recent_count: Int"
         },
         {
@@ -5345,6 +5437,10 @@
         {
           "name": "capa:param",
           "value": "trail: List<AuditEvent>"
+        },
+        {
+          "name": "capa:attribute:strict_ifc",
+          "value": ""
         }
       ]
     },
@@ -5364,7 +5460,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:102:1"
+          "value": "main.capa:157:1"
         },
         {
           "name": "capa:return_type",
@@ -5448,7 +5544,7 @@
         },
         {
           "name": "capa:pos",
-          "value": "main.capa:113:5"
+          "value": "main.capa:168:5"
         },
         {
           "name": "capa:return_type",
@@ -5576,6 +5672,7 @@
         "capa:fn:main.capa:_capa_m9__rule_high_amount",
         "capa:fn:main.capa:_capa_m9__rule_velocity",
         "capa:fn:main.capa:_capa_m9__rule_sanctions",
+        "capa:fn:main.capa:pan_fingerprint_blocked",
         "capa:fn:main.capa:_capa_m9__rule_structuring",
         "capa:fn:main.capa:assess",
         "capa:fn:main.capa:explain",
@@ -5744,6 +5841,12 @@
       ]
     },
     {
+      "ref": "capa:fn:main.capa:pan_fingerprint_blocked",
+      "dependsOn": [
+        "capa:fn:main.capa:strings_equal"
+      ]
+    },
+    {
       "ref": "capa:fn:main.capa:assess",
       "dependsOn": [
         "capa:fn:main.capa:_capa_m9__rule_high_amount",
@@ -5806,7 +5909,9 @@
     {
       "ref": "capa:fn:main.capa:process",
       "dependsOn": [
+        "capa:builtin:main.capa:Fs",
         "capa:fn:main.capa:mask_pan",
+        "capa:fn:main.capa:pan_fingerprint",
         "capa:fn:main.capa:evaluate_exemption",
         "capa:fn:main.capa:requires_sca",
         "capa:fn:main.capa:sca_satisfied",
@@ -5816,6 +5921,7 @@
         "capa:fn:main.capa:verify_dynamic_link",
         "capa:fn:main.capa:claim",
         "capa:fn:main.capa:idempotency_key",
+        "capa:fn:main.capa:pan_fingerprint_blocked",
         "capa:fn:main.capa:assess",
         "capa:fn:main.capa:risk_to_decision"
       ]

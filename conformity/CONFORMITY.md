@@ -47,12 +47,24 @@ This is a **language showcase**, not a certified product.
 | `vex.cyclonedx.json` | VEX (exploitability statements) | `capa --vex main.capa` |
 | `provenance.slsa.json` | SLSA v1 build provenance | `capa --provenance main.capa` |
 
-Regenerate the whole pack with `./generate.sh` from the repo root. On a
-re-diff against what ships here, the only expected divergence is the
-build timestamps (`timestamp`, `created`, `annotationDate`, `startedOn`,
-`finishedOn`), which are stamped at generation time. The substantive
-content (capabilities, declassification sites, functions) is stable and
-reproducible; `manifest.json` carries no timestamp and is byte-identical.
+The pack is **byte-for-byte reproducible**. To verify it: clone the
+repo, check out this commit, run `capa install` (to vendor and verify
+`capa_hash`), then run `./generate.sh` from the repo root and diff its
+output against what ships here. Every file -- `manifest.json`,
+`sbom.cyclonedx.json`, `sbom.spdx.json`, `vex.cyclonedx.json`,
+`provenance.slsa.json` -- comes out **identical, with zero differences**,
+build timestamps included.
+
+The build timestamps are pinned, not stamped at run time:
+`generate.sh` reads a fixed Unix epoch from the versioned
+`conformity/SOURCE_DATE_EPOCH` file and exports it as `SOURCE_DATE_EPOCH`
+(the reproducible-builds.org convention), so the compiler derives
+`timestamp`, `created`, `annotationDate`, `startedOn`, and `finishedOn`
+from that instant instead of the wall clock. The epoch is a constant in
+the repo, deliberately *not* derived from the commit time (that would be
+circular: the pack is generated and committed together, and an assessor
+checking out the commit would observe a different HEAD time), and is
+bumped by hand per release.
 
 ## Headline findings for this program
 

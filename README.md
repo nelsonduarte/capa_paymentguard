@@ -176,7 +176,10 @@ VEX document, and SLSA build provenance, all emitted by the compiler,
 plus [`CONFORMITY.md`](conformity/CONFORMITY.md) mapping them to the
 specific Annex I technical requirements they support. Regenerate it
 with `./generate.sh`. It is a showcase, not a certification (see the
-honesty boundary in `CONFORMITY.md`).
+honesty boundary in `CONFORMITY.md`). The pack is byte-for-byte
+reproducible: rerunning `./generate.sh` reproduces every artifact
+exactly, build timestamps included (a fixed `SOURCE_DATE_EPOCH` pins
+them), so an assessor's diff against the committed pack is empty.
 
 ## Requirement mapping (brief -> mechanism)
 

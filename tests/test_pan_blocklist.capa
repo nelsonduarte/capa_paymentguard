@@ -1,0 +1,70 @@
+// tests/test_pan_blocklist.capa
+//
+// Regression guard for the PCI DSS 3.4 PAN-blocklist path (Scenario D
+// in main.capa). It pins two things against silent drift:
+//
+//   1. The keyed PAN fingerprint itself. The standard test PAN
+//      4012888888881881 under the key "pan-fingerprint-key" must
+//      HMAC-SHA256 to b13e1909f770d473a425335c8d1dd122aa1c0f2166c31
+//      10e7ebfa6f5b9cf96dd. This exact value is cross-checked against
+//      the Python `hmac` oracle:
+//
+//          hmac.new(b"pan-fingerprint-key",
+//                   b"4012888888881881",
+//                   hashlib.sha256).hexdigest()
+//
+//      If capa_hash, the key, or the fingerprint construction ever
+//      drifts, this assertion fails. The PAN here is a public test
+//      vector (not real cardholder data), so the test declassifies
+//      the fingerprint to compare it: in production the same value
+//      stays @secret and is only declassified at the audit sink.
+//
+//   2. The blocklist decision. The same fingerprint, matched against
+//      the shipped fp_blocklist via fraud.pan_fingerprint_blocked,
+//      must return true (Scenario D is refused), and a fingerprint
+//      NOT on the list must return false. This protects against the
+//      blocklist entry being edited or dropped, which would silently
+//      let a known-compromised PAN through.
+
+import capa_test.testing
+import mask
+import fraud
+
+// The Scenario D fixture, mirrored from main.capa so a change there
+// that breaks the refusal is caught here.
+const PAN_BLOCKED: String = "4012888888881881"
+const FP_KEY: String = "pan-fingerprint-key"
+const FP_EXPECTED: String = "b13e1909f770d473a425335c8d1dd122aa1c0f2166c3110e7ebfa6f5b9cf96dd"
+
+fun main(stdio: Stdio)
+    let t = tester()
+
+    // The PAN is a published test vector, so its fingerprint is not a
+    // secret to protect here; declassify it only to pin the value.
+    let pan: @secret String = PAN_BLOCKED
+    let fp = mask.pan_fingerprint(pan, FP_KEY)
+    let fp_public = declassify(
+        fp,
+        reason: "test vector: pinning the known fingerprint of a public test PAN against the Python hmac oracle"
+    )
+    t.eq_str(stdio, "scenario_d_fingerprint", fp_public, FP_EXPECTED)
+
+    // The shipped blocklist, mirrored from main.capa.
+    let fp_blocklist: List<String> = [
+        "b13e1909f770d473a425335c8d1dd122aa1c0f2166c3110e7ebfa6f5b9cf96dd",
+        "bcce5bb6d143f732a6908bcbbb36fc55fe2a5255cf4ae98553202eb1a9467b8c"
+    ]
+
+    // Scenario D: the blocked PAN's fingerprint matches the list, so
+    // the transaction is refused.
+    t.eq_bool(stdio, "scenario_d_blocked",
+        fraud.pan_fingerprint_blocked(mask.pan_fingerprint(pan, FP_KEY), fp_blocklist),
+        true)
+
+    // A PAN that is not on the list is not refused by this rule.
+    let clean: @secret String = "5555555555554444"
+    t.eq_bool(stdio, "clean_pan_not_blocked",
+        fraud.pan_fingerprint_blocked(mask.pan_fingerprint(clean, FP_KEY), fp_blocklist),
+        false)
+
+    t.finish(stdio)

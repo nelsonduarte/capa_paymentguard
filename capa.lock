@@ -8,3 +8,12 @@ pin = "v0.1.1"
 pin_kind = "tag"
 commit = "d4d25c644491b7daa6f3b0c30083f2bbfb93d29f"
 signing_key = "6C1D222D491FB88031E041A536CFB426101AA24B"
+
+[[dependencies]]
+name = "capa_test"
+git = "https://github.com/nelsonduarte/capa_test"
+pin = "v0.1.0"
+pin_kind = "tag"
+commit = "511e3cf5c954d4f9a989136f8eb3646bbc008a4b"
+signing_key = "6C1D222D491FB88031E041A536CFB426101AA24B"
+dev = true

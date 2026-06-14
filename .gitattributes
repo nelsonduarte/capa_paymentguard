@@ -1,0 +1,7 @@
+# Keep the reproducibility inputs and the generator LF-only on every
+# platform. A CRLF checkout of conformity/SOURCE_DATE_EPOCH would leave
+# a trailing carriage return in the value generate.sh reads, which the
+# compiler's strict-decimal SOURCE_DATE_EPOCH parser rejects, breaking
+# the byte-for-byte rebuild for an assessor on Windows.
+conformity/SOURCE_DATE_EPOCH text eol=lf
+generate.sh text eol=lf

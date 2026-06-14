@@ -18,11 +18,24 @@
 # would be circular. An assessor who checks out the pack's commit would
 # see a different HEAD time than the one used to build it, and the diff
 # would fail. A constant in the repo makes the build independent of when
-# or where it runs. Bump conformity/SOURCE_DATE_EPOCH by hand per release.
+# or where it runs.
+#
+# To bump the epoch for a new release, derive it from a chosen UTC date
+# rather than hand-typing a number (which risks a wrong value):
+#
+#     date -u -d 2027-01-01 +%s > conformity/SOURCE_DATE_EPOCH   # GNU date
+#     # BSD/macOS: date -u -j -f %Y-%m-%d 2027-01-01 +%s
+#
+# then rerun this script and commit the regenerated pack in the same
+# commit.
 set -e
 
-# Strip any stray carriage return (a CRLF checkout on Windows) so the
-# value is a clean decimal the compiler's strict parser accepts.
+# Strip any stray carriage return so the value is a clean decimal. The
+# compiler's SOURCE_DATE_EPOCH parser actually TOLERATES a trailing CR
+# (a value with \r still reads the correct instant), so this is defence
+# in depth to keep the epoch file clean, not because the parser rejects
+# it. With the eol=lf pin in .gitattributes a CRLF checkout cannot reach
+# this file anyway.
 SOURCE_DATE_EPOCH="$(tr -d '\r' < conformity/SOURCE_DATE_EPOCH)"
 export SOURCE_DATE_EPOCH
 

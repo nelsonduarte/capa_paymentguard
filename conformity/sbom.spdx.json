@@ -7,14 +7,14 @@
   "creationInfo": {
     "created": "2026-06-14T00:00:00Z",
     "creators": [
-      "Tool: capa-1.0.0"
+      "Tool: capa-1.3.0"
     ]
   },
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-main.capa",
       "name": "main.capa",
-      "versionInfo": "1.0.0",
+      "versionInfo": "1.3.0",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",

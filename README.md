@@ -144,6 +144,29 @@ capa --check leaky_example.capa
 ./generate.sh
 ```
 
+### Running as a stock WASI component (experimental, opt-in)
+
+The same source builds and runs as a stock **WASI Preview 2** component,
+runnable on any WASI runtime without the Capa host:
+
+```sh
+capa --wasm --component --wasi --run main.capa
+```
+
+This produces the same four scenarios and the same `audit_log.txt` /
+`fraud_alerts.txt` (byte-for-byte, modulo line endings; the HMAC audit
+chain is identical). No `--preopen` is needed: every filesystem path in
+this program is a literal routed through a helper (`"audit_log.txt"`,
+`"fraud_alerts.txt"`), which the compiler resolves by constant
+propagation, so the component's filesystem authority is fixed at compile
+time rather than taken from an argument.
+
+The component imports only canonical `wasi:*` interfaces
+(`wasi:filesystem`, `wasi:io`, `wasi:cli`); it does **not** import
+`capa:host`. It is stock WASI, so the runtime, not the Capa host,
+materializes the filesystem authority. The `--wasi` path is
+experimental and opt-in.
+
 ## The compliance story in one screen
 
 ```

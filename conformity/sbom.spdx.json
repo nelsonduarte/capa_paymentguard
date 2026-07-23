@@ -3,18 +3,18 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "main.capa",
-  "documentNamespace": "https://capa-language.com/spdx/bb0b98bf-9688-5713-b853-bb07cc0ad710",
+  "documentNamespace": "https://capa-language.com/spdx/2c27041e-bd6a-566b-b4ca-8f45a8f0f5af",
   "creationInfo": {
     "created": "2026-06-14T00:00:00Z",
     "creators": [
-      "Tool: capa-1.3.0"
+      "Tool: capa-1.18.1"
     ]
   },
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-main.capa",
       "name": "main.capa",
-      "versionInfo": "1.3.0",
+      "versionInfo": "1.18.1",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
@@ -172,6 +172,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -273,6 +279,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -369,6 +381,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -481,6 +499,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -577,6 +601,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -695,6 +725,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -797,6 +833,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -910,6 +952,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -1040,6 +1088,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -1165,6 +1219,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -1267,6 +1327,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -1379,6 +1445,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -1481,6 +1553,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -1611,6 +1689,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -1725,6 +1809,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -1855,6 +1945,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -1963,6 +2059,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -2087,6 +2189,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -2206,6 +2314,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -2319,6 +2433,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -2421,6 +2541,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -2533,6 +2659,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -2635,6 +2767,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -2747,6 +2885,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -2849,6 +2993,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -2967,6 +3117,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3075,6 +3231,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -3199,6 +3361,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3307,6 +3475,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -3425,6 +3599,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3538,6 +3718,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3645,6 +3831,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3741,6 +3933,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -3853,6 +4051,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -3960,6 +4164,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -4062,6 +4272,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -4180,6 +4396,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -4276,6 +4498,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -4388,6 +4616,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -4490,6 +4724,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -4603,6 +4843,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -4727,6 +4973,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -4835,6 +5087,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -4953,6 +5211,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -5055,6 +5319,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -5173,6 +5443,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -5286,6 +5562,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -5388,6 +5670,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -5506,6 +5794,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -5602,6 +5896,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -5709,6 +6009,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -5827,6 +6133,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -5940,6 +6252,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -6042,6 +6360,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -6160,6 +6484,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -6262,6 +6592,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -6386,6 +6722,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -6482,6 +6824,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -6588,6 +6936,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -6684,6 +7038,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -6796,6 +7156,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -6898,6 +7264,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -7010,6 +7382,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -7117,6 +7495,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -7219,6 +7603,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -7337,6 +7727,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Stdio"
         },
         {
@@ -7427,6 +7823,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -7546,6 +7948,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",
@@ -7754,6 +8162,12 @@
           "annotationDate": "2026-06-14T00:00:00Z",
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Unsafe"
         },
         {
@@ -7874,6 +8288,12 @@
           "annotationType": "OTHER",
           "annotator": "Tool: capa",
           "comment": "capa:provably_excluded_capability=Random"
+        },
+        {
+          "annotationDate": "2026-06-14T00:00:00Z",
+          "annotationType": "OTHER",
+          "annotator": "Tool: capa",
+          "comment": "capa:provably_excluded_capability=Serve"
         },
         {
           "annotationDate": "2026-06-14T00:00:00Z",

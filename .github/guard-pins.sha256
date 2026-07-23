@@ -1,0 +1,121 @@
+# THE GUARD REVISION THIS REPOSITORY AUDITED, BY CONTENT.
+#
+# .github/workflows/release.yml pins the shared release guards by commit
+# SHA. A SHA is content-addressed and therefore immutable, so the pin
+# cannot be edited under us. What a SHA does NOT do is tell a reader what
+# is in it, and nothing states which BYTES were looked at before pinning
+# them. That is what this file is for.
+#
+# Every file the guards execute is recorded below by SHA-256, taken at
+# the pinned revision. tests/test_guard_pins.sh re-fetches each one and
+# refuses any difference, so:
+#
+#   * bumping the pin without re-auditing goes RED, because the digests
+#     below describe a revision the workflow no longer names;
+#   * a pin that resolves to bytes other than the audited ones goes RED,
+#     which is the falsifiable form of "we ran what we pinned";
+#   * the check runs offline of any claim the guards make about
+#     themselves, before a tag is ever pushed.
+#
+# WHAT REMAINS TRUSTED, stated plainly rather than papered over: that
+# GitHub runs the workflow file living at the pinned SHA. A workflow
+# cannot establish its own identity from inside itself, because a
+# substituted file could simply print the expected answer. That is the
+# platform's guarantee and the reason `uses:@<sha>` is written by SHA.
+# Everything downstream of it is checked here by content.
+#
+# THE DIGESTS BELOW WERE WRITTEN BY `bash fleet/guard_pins.sh`, which
+# fetched each file at 2db00705e05b1774cf41eb58006e6533cfca4d55 and hashed it. Do not
+# hand-edit them, and do not copy this file from another repository: a
+# copied record passes every check while having audited nothing, because
+# the digests are genuinely the pinned revision's bytes. What a copy
+# cannot carry is the reading.
+#
+# TO RE-AUDIT AFTER A PIN BUMP: read the diff, then re-run
+# `bash fleet/guard_pins.sh <this repository>` and rewrite the note below.
+#
+#   https://github.com/nelsonduarte/capa-language/compare/<old>...2db00705e05b1774cf41eb58006e6533cfca4d55
+
+# ---------------------------------------------------------------------
+# AUDIT NOTE, 2db0070. FIRST PIN IN THIS REPOSITORY, so there is no
+# previous revision and no diff to read; the audit is of the five files
+# themselves. All five were fetched at this revision, digested
+# independently of the list below (the five digests agreed), and read
+# rather than accepted on those digests. This note records what reading
+# them established about how this repository is wired.
+#
+# tools/capa_floor.sh (80 lines) mattered most here, because it SELECTS
+# the binary the clean room proves the artefact against: it reads the
+# `capa` key of the [package] table and the guard downloads that release.
+# Run against this repository's manifest it prints 1.18.1, which is the
+# floor measured in capa.toml and the first release whose binary can run
+# `capa test` at all. Two properties were checked against this manifest
+# rather than assumed. The read is scoped to [package] by an awk that
+# resets on every `[`, so neither the several `capa = ">=..."` strings
+# quoted inside this manifest's comment blocks nor the `[capabilities]`
+# and `[dependencies.capa_hash]` tables below it can be picked up; and
+# it refuses anything but an exact version or a plain `>=X.Y.Z`, which
+# is why the floor is written that way and not as a range. Its own
+# header says nothing in the compiler enforces the field. That stopped
+# being true in 1.19.0, whose capa/pkg/_floor.py makes a ROOT manifest's
+# floor a hard error and a DEPENDENCY's floor a warning, and the split
+# is the reason capa_hash's own false floor does not bite this package.
+# The two grammars agree on this manifest.
+#
+# tools/clean_room_build.sh (223 lines) runs the consumer flow this
+# repository supplies, so its contract is the one release.yml's
+# `consumer-commands` block has to satisfy. Three things read here
+# shaped that block. Each command is executed as `bash -c "<line>"` with
+# `set -e` off and the status read explicitly, so a line may be a
+# pipeline: the single negative is written as
+# `capa --check leaky_example.capa 2>&1 | grep -q "..."` and that is a
+# supported shape rather than a hopeful one. It runs `unset CAPA_PATH`
+# before the first command, so nothing can reach back into the
+# development tree. And it refuses a room that is not empty, which is
+# the isolation the eight entry points are compiled under, and the
+# reason the closure measurement in capa.toml was repeated against an
+# extracted tarball rather than only in place.
+#
+# tools/check_tag_version.sh (112 lines) compares the pushed tag with
+# the [package] version by the same table-scoped awk. Run here against
+# capa.toml with v0.2.0 it prints "OK: tag v0.2.0 matches capa.toml
+# [package] version 0.2.0". It takes a third argument naming the table,
+# which this caller does not pass, so the default [package] applies.
+#
+# tools/verify_guard_digests.sh (148 lines) is the script the five
+# digests below cause to run, so omitting it from this record would be
+# omitting a file this repository makes execute. It fails closed on a
+# missing file, a malformed line, a path containing `..`, and on an
+# EMPTY digest list, which is the case worth having: "verified nothing"
+# must not render as "verified".
+#
+# .github/workflows/release-guards.yml (608 lines) is the caller of the
+# other four. Read for what it does with our inputs rather than
+# end-to-end line by line, and that is stated so the bound of this audit
+# is visible: both guard jobs take `contents: read` and no id-token,
+# both fail closed on an empty `job.workflow_sha` before any checkout,
+# the compiler binary is downloaded from the release page for the
+# version capa_floor.sh printed and its own SLSA provenance verified
+# with `gh attestation verify` before it is put on PATH, `capa --version`
+# is then required to report that same version, and guard 2 reconstructs
+# the tarball from the tag with the same `git archive` invocation the
+# publish job uses, exporting `tarball-sha256` so the caller can close
+# the gap between what was verified and what is uploaded. release.yml
+# closes it.
+#
+# WHY THIS REVISION AND NOT THE COMPILER'S CURRENT MAIN. Every other
+# repository in this fleet pins 2db0070, and two of the five files have
+# moved since: release-guards.yml by one line and capa_floor.sh by 21,
+# tightening its version regex to exactly three numeric components. A
+# bump is a fleet-wide exercise, because every adopter's record must be
+# re-audited against the new bytes, and doing it in one repository would
+# leave sixteen records describing a revision only sixteen of them run.
+# ---------------------------------------------------------------------
+
+revision 2db00705e05b1774cf41eb58006e6533cfca4d55
+
+4bee86b2951bd33d3cb8bab6721b2abb30f0533a010dfe93d36ebb275497f1d4  .github/workflows/release-guards.yml
+212b06bb4be0100267fcc98bb2be7f99f4860007f51ae222ed359cddb638eaa2  tools/capa_floor.sh
+420290eb75a96f49aed937be40a3d63d1e2db3aba2de4a4a87c9282eb2a13b38  tools/check_tag_version.sh
+537a7e902540efe4fe5c8f4ae72788b2f3595696b8a7a4bb0a54e19fe523ffcd  tools/clean_room_build.sh
+4fa535d216ecbd647444c80e4cab978ff8e636e1d5edb437842ee561b9f17e0f  tools/verify_guard_digests.sh

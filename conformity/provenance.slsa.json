@@ -2,9 +2,75 @@
   "_type": "https://in-toto.io/Statement/v1",
   "subject": [
     {
+      "name": "audit.capa",
+      "digest": {
+        "sha256": "a5713260abb944f9b89822aa1d35a19c379c0c96aa590f9a479b65c2bc0cdce0"
+      }
+    },
+    {
+      "name": "auth.capa",
+      "digest": {
+        "sha256": "7e0c61c6c9561212dd1596cfa005ab2983a9f234b7826dbdbe6c7b0fdcd3b714"
+      }
+    },
+    {
+      "name": "crypto_stub.capa",
+      "digest": {
+        "sha256": "cfba68b89aaafc1d50fc8cd8b1343f4c60f18bde6eada4788b510688733f9f15"
+      }
+    },
+    {
+      "name": "domain.capa",
+      "digest": {
+        "sha256": "027aa3b95c511e6b0bac0a5c5e6a06f40d3b2b0077b59162cb970e82aef97bbe"
+      }
+    },
+    {
+      "name": "fraud.capa",
+      "digest": {
+        "sha256": "419abb48123e904170ef4682bbd61973916b44c8ed8343b06feacacf2b92080b"
+      }
+    },
+    {
       "name": "main.capa",
       "digest": {
         "sha256": "e1e8feaad2601ccc77241d372654182738c0f7276dc8db9df0d7d2da3599292d"
+      }
+    },
+    {
+      "name": "mask.capa",
+      "digest": {
+        "sha256": "4581699ac9c26354f4e9500e0c0c65481347a43278c18f958ab8c7fb67a608fc"
+      }
+    },
+    {
+      "name": "validate.capa",
+      "digest": {
+        "sha256": "eb990395c56c8fed8c6e30efae9b35b2d580f53aff55ca07cfe4c336de0eabee"
+      }
+    },
+    {
+      "name": "vendor/capa_hash/hmac.capa",
+      "digest": {
+        "sha256": "a10271e07ae0fbb8aa3af89b2931e74d8cc83dfb3bc82208d69b0ca1e9a3c9ba"
+      }
+    },
+    {
+      "name": "vendor/capa_hash/sha256.capa",
+      "digest": {
+        "sha256": "8d521ee3616e7b7a003cf5bc238e00df9847b33626842d48a995ed0cb5b9e968"
+      }
+    },
+    {
+      "name": "vendor/capa_hash/tables.capa",
+      "digest": {
+        "sha256": "1ee64120597a312387d95e622c513acaf7e5de8cef88e36e0fd0cdbd9da5208d"
+      }
+    },
+    {
+      "name": "vendor/capa_hash/verify.capa",
+      "digest": {
+        "sha256": "5718b29dcb05e4d948a2ff7d0f1edada8333af3d684117254689e311ad08f5ac"
       }
     }
   ],
@@ -16,7 +82,7 @@
         "source": "main.capa"
       },
       "internalParameters": {
-        "capaVersion": "1.3.0",
+        "capaVersion": "1.18.1",
         "target": "python>=3.10"
       },
       "resolvedDependencies": []
@@ -25,11 +91,11 @@
       "builder": {
         "id": "https://capa-language.com/cli",
         "version": {
-          "capa": "1.3.0"
+          "capa": "1.18.1"
         }
       },
       "metadata": {
-        "invocationId": "2a2e998c-8dbe-5c8c-8140-8a7818b2155b",
+        "invocationId": "500d0c3a-c8db-513c-ab27-1f6d5fba9e49",
         "startedOn": "2026-06-14T00:00:00Z",
         "finishedOn": "2026-06-14T00:00:00Z"
       },

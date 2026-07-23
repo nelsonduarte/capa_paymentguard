@@ -15,12 +15,107 @@
 
 [package]
 name = "capa_paymentguard"
-version = "0.1.0"
-capa = ">=1.3.0"
+version = "0.2.0"
+# THE COMPILER FLOOR IS LOAD-BEARING, and not only as documentation.
+# tools/capa_floor.sh in the release guards reads this key to decide
+# which RELEASED compiler the clean room downloads, so it is the version
+# the published tarball is actually proven to build with, and since
+# 1.19.0 the compiler itself makes a root manifest's floor a hard error.
+#
+# IT SAID ">=1.3.0", AND THAT CLAIM WAS TRUE AS FAR AS IT WENT. Unlike
+# every other repository in this fleet whose floor turned out false, this
+# one names a release that really is a boundary for this program, and the
+# boundary was re-measured here rather than taken on trust. Deleting the
+# declassify in `print_decision` and compiling main.capa against the
+# released binaries:
+#
+#   capa 1.2.0   4 warnings   the @secret decision reaching Stdio.println
+#                             through the value of a `match` expression
+#                             at main.capa:163 is not reported AT ALL
+#   capa 1.3.0   5 warnings   main.capa:163 reported
+#   capa 1.19.0  5 warnings   the same
+#
+# So >=1.3.0 is a bound on the GUARANTEE: below it, one of this
+# program's own declassify bridges stops being load-bearing and the
+# laundering is silent. What it is not is a bound on the BUILD. 1.1.0
+# and 1.2.0 install the dependency and compile all eight compiling
+# modules, 8 of 8, so nothing about the build would ever have told
+# anyone the floor mattered.
+#
+# THE TRUE FLOOR IS HIGHER STILL, and for a reason that has nothing to
+# do with this program's semantics: no released binary before 1.18.1 can
+# run `capa test` at all. Under PyInstaller `sys.executable` is the capa
+# binary itself, which rejects `-m`, so 1.3.0 through 1.18.0 each fail
+# the single test in tests/ with
+#
+#   capa: error: unrecognized arguments: -m .../tests/test_pan_blocklist.capa
+#
+# and the consumer flow this repository's release runs ends in
+# `capa test`. Measured 1 test passing on 1.18.1 and on 1.19.0, and 0 on
+# 1.0.0, 1.1.0, 1.2.0, 1.3.0, 1.16.0, 1.17.0 and 1.18.0. 1.0.0 does not
+# even reach that point: it has no `capa install`, so six of the eight
+# modules do not resolve capa_hash and do not compile.
+#
+# >=1.18.1 is therefore the floor, and it is the fleet's floor for the
+# same reason every sibling's is. The >=1.3.0 measurement above is kept
+# because it is the only thing that records WHY the IFC claims in this
+# README are checked by an analyzer that can see them.
+capa = ">=1.18.1"
 
+# THE CAPABILITY CEILING. Two names, and the exclusion is the point:
+# seven of capa's nine ceiling-eligible capabilities are refused, so a
+# future edit that reaches for the network, a database, a subprocess,
+# the environment, the clock, randomness or an inbound socket fails the
+# release rather than appearing in the next SBOM.
+#
+# MEASURED, not asserted. Against 1.19.0 with `max = []`, the only
+# entries that report a violation are audit.capa ("introduces 'Fs'") and
+# main.capa ("introduces 'Fs'" and "introduces 'Stdio'"); the other six
+# compiling modules report OK, which is the same statement as
+# fraud.capa's headline claim that the risk engine holds no authority at
+# all.
+#
+# THAT THIS CEILING BITES was measured by planting a `Net`-taking
+# function in audit.capa and running the check from every entry:
+#
+#   capa --check-capabilities audit.capa  -> FAILED, introduces 'Net'
+#   capa --check-capabilities main.capa   -> FAILED, introduces 'Net'
+#   the other six                         -> OK
+#
+# which is also the demonstration that the check sees only the import
+# closure of the entry it is handed. Six entries reported OK over a tree
+# that contained a Net-taking function, so the release names all eight
+# rather than relying on main.capa's closure happening to cover them.
+[capabilities]
+max = ["Fs", "Stdio"]
+
+# capa_hash was pinned at v0.1.1 here while six sibling consumers pinned
+# v0.1.2, which made this repository the fleet's only split pin. It is
+# resolved to v0.1.2, and what that changes is worth stating precisely,
+# because the answer is "nothing that executes":
+#
+#   git diff v0.1.1 v0.1.2 -- '*.capa'   is EMPTY
+#
+# The two tags differ in capa.toml (version 0.1.1 -> 0.1.2, floor
+# ">=1.0.0" -> ">=1.1.0") and in one README line. Every byte of
+# sha256.capa, hmac.capa, verify.capa and tables.capa is identical, so
+# the HMAC-SHA256, the SHA-256 and the constant-time compare this
+# program depends on are the same code either way, and the split pin was
+# cosmetic rather than a divergence in behaviour.
+#
+# NEITHER TAG'S OWN FLOOR IS TRUE. capa_hash self-imports
+# `capa_hash.sha256` in three files, which no release before 1.18.0 can
+# resolve in an extracted tarball, so both ">=1.0.0" and ">=1.1.0"
+# name compilers that cannot build the library they describe. capa_hash's
+# main has since corrected it to >=1.18.1 for 0.2.0, but that is not
+# tagged, so no honest tag exists to pin yet. It does not bite here: a
+# DEPENDENCY's floor is a warning rather than an error (capa/pkg/_floor.py
+# splits root from transitive deliberately), and both floors are below
+# the 1.18.1 this package now requires, so neither warns. Re-pin to
+# v0.2.0 when it is published.
 [dependencies.capa_hash]
 git = "https://github.com/nelsonduarte/capa_hash"
-tag = "v0.1.1"
+tag = "v0.1.2"
 verify_key = "6C1D222D491FB88031E041A536CFB426101AA24B"
 
 # capa_test is a dev-dependency: resolved only when this repository is

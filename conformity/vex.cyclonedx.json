@@ -9,7 +9,7 @@
         {
           "type": "application",
           "name": "capa",
-          "version": "1.3.0"
+          "version": "1.18.1"
         }
       ]
     },
@@ -17,7 +17,7 @@
       "bom-ref": "capa:program:main.capa",
       "type": "application",
       "name": "main.capa",
-      "version": "1.3.0"
+      "version": "1.18.1"
     }
   },
   "vulnerabilities": []

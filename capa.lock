@@ -4,9 +4,9 @@
 [[dependencies]]
 name = "capa_hash"
 git = "https://github.com/nelsonduarte/capa_hash"
-pin = "v0.1.1"
+pin = "v0.1.2"
 pin_kind = "tag"
-commit = "d4d25c644491b7daa6f3b0c30083f2bbfb93d29f"
+commit = "449488a0064178b62aa79216419a626d03ca1929"
 signing_key = "6C1D222D491FB88031E041A536CFB426101AA24B"
 
 [[dependencies]]

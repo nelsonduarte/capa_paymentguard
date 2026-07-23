@@ -6,6 +6,13 @@
 # rerun this script and diff its output against what ships in the repo
 # and get ZERO differences, not just "stable modulo timestamps".
 #
+# RUN IT WITH THE COMPILER capa.toml DECLARES, currently 1.18.1. Every
+# artefact carries a `capa_version` field and later releases add fields
+# the emitters did not have before, so the pack is byte-for-byte
+# reproducible AT A COMPILER VERSION: regenerating on 1.19.0 moves all
+# five files. If you bump the floor, regenerate and commit the pack in
+# the same commit.
+#
 # Determinism comes from SOURCE_DATE_EPOCH (the reproducible-builds.org
 # convention). The compiler's --cyclonedx / --spdx / --vex / --provenance
 # emitters stamp their build time from this instant instead of the wall

@@ -1,7 +1,7 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7634ad69-9637-5961-8e92-3193ed66ba62",
+  "serialNumber": "urn:uuid:da539246-a8e2-5fb7-b2bb-9b35212f2937",
   "version": 1,
   "metadata": {
     "timestamp": "2026-06-14T00:00:00Z",
@@ -10,7 +10,7 @@
         {
           "type": "application",
           "name": "capa",
-          "version": "1.3.0"
+          "version": "1.18.1"
         }
       ]
     },
@@ -18,7 +18,7 @@
       "bom-ref": "capa:program:main.capa",
       "type": "application",
       "name": "main.capa",
-      "version": "1.3.0",
+      "version": "1.18.1",
       "supplier": {
         "name": "capa-build"
       },
@@ -140,6 +140,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -212,6 +216,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -281,6 +289,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -360,6 +372,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -429,6 +445,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -512,6 +532,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -585,6 +609,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -665,6 +693,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -756,6 +788,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -844,6 +880,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -917,6 +957,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -996,6 +1040,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1069,6 +1117,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -1160,6 +1212,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1241,6 +1297,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -1332,6 +1392,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1409,6 +1473,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -1496,6 +1564,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1580,6 +1652,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1660,6 +1736,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1733,6 +1813,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -1812,6 +1896,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -1885,6 +1973,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -1964,6 +2056,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2037,6 +2133,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -2120,6 +2220,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2197,6 +2301,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -2284,6 +2392,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2361,6 +2473,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -2444,6 +2560,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2524,6 +2644,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2600,6 +2724,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2669,6 +2797,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -2748,6 +2880,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2824,6 +2960,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -2897,6 +3037,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -2980,6 +3124,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3049,6 +3197,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3128,6 +3280,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3201,6 +3357,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3281,6 +3441,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3368,6 +3532,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3445,6 +3613,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3528,6 +3700,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3601,6 +3777,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3684,6 +3864,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3764,6 +3948,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3837,6 +4025,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -3920,6 +4112,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -3989,6 +4185,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4065,6 +4265,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4148,6 +4352,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4228,6 +4436,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4301,6 +4513,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4384,6 +4600,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4457,6 +4677,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4544,6 +4768,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4613,6 +4841,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4688,6 +4920,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4757,6 +4993,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4836,6 +5076,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -4909,6 +5153,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -4988,6 +5236,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -5064,6 +5316,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -5137,6 +5393,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -5220,6 +5480,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Stdio"
         },
         {
@@ -5285,6 +5549,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -5369,6 +5637,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",
@@ -5512,6 +5784,10 @@
         },
         {
           "name": "capa:provably_excluded_capability",
+          "value": "Serve"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
           "value": "Unsafe"
         },
         {
@@ -5597,6 +5873,10 @@
         {
           "name": "capa:provably_excluded_capability",
           "value": "Random"
+        },
+        {
+          "name": "capa:provably_excluded_capability",
+          "value": "Serve"
         },
         {
           "name": "capa:provably_excluded_capability",

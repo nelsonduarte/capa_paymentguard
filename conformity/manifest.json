@@ -1,9 +1,10 @@
 {
-  "capa_version": "1.3.0",
+  "capa_version": "1.18.1",
   "schema_version": 1,
   "filename": "main.capa",
   "user_defined_capabilities": [],
   "typestates": [],
+  "foreign_components": [],
   "functions": [
     {
       "name": "risk_name",
@@ -34,6 +35,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -42,10 +44,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "risk_rank",
@@ -76,6 +81,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -84,10 +90,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "max_risk",
@@ -125,6 +134,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -133,6 +143,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -159,7 +171,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "factor_name",
@@ -190,6 +203,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -198,10 +212,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "decision_name",
@@ -232,6 +249,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -240,10 +258,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m5__hex_digit",
@@ -274,6 +295,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -282,6 +304,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -297,7 +321,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "to_hex",
@@ -328,6 +353,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -336,6 +362,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -362,7 +390,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__rotr32",
@@ -400,6 +429,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -408,6 +438,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -416,7 +448,8 @@
         }
       ],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__shr32",
@@ -454,6 +487,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -462,6 +496,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -470,7 +506,8 @@
         }
       ],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__round_constants",
@@ -493,6 +530,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -501,10 +539,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__iv256",
@@ -527,6 +568,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -535,10 +577,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__iv224",
@@ -561,6 +606,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -569,10 +615,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__read_word",
@@ -610,6 +659,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -618,6 +668,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -626,7 +678,8 @@
         }
       ],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__schedule",
@@ -657,6 +710,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -665,6 +719,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -787,7 +843,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__compress",
@@ -825,6 +882,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -833,6 +891,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -938,7 +998,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__pad",
@@ -969,6 +1030,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -977,6 +1039,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1039,7 +1103,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__digest_words",
@@ -1077,6 +1142,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1085,6 +1151,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1133,7 +1201,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__slice64",
@@ -1171,6 +1240,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1179,6 +1249,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1194,7 +1266,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m4__words_to_bytes",
@@ -1232,6 +1305,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1240,6 +1314,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1288,7 +1364,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha256_bytes",
@@ -1319,6 +1396,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1327,6 +1405,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1364,7 +1444,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha256_hex",
@@ -1395,6 +1476,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1403,6 +1485,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1429,7 +1513,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha256_hex_utf8",
@@ -1460,6 +1545,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1468,6 +1554,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1490,7 +1578,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha224_bytes",
@@ -1521,6 +1610,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1529,6 +1619,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1566,7 +1658,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha224_hex",
@@ -1597,6 +1690,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1605,6 +1699,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1631,7 +1727,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sha224_hex_utf8",
@@ -1662,6 +1759,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1670,6 +1768,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1692,7 +1792,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m3__key_block",
@@ -1723,6 +1824,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1731,6 +1833,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1782,7 +1886,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m3__xor_pad",
@@ -1820,6 +1925,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1828,6 +1934,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1843,7 +1951,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m3__concat",
@@ -1881,6 +1990,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1889,6 +1999,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -1915,7 +2027,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "hmac_sha256_bytes",
@@ -1953,6 +2066,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -1961,6 +2075,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2050,7 +2166,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "hmac_sha256_hex",
@@ -2088,6 +2205,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2096,6 +2214,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2124,7 +2244,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "hmac_sha256_hex_utf8",
@@ -2162,6 +2283,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2170,6 +2292,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2201,7 +2325,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "is_supported_currency",
@@ -2232,6 +2357,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2240,10 +2366,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "validate_structure",
@@ -2274,6 +2403,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2282,6 +2412,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2352,7 +2484,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m2__link_material",
@@ -2390,6 +2523,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2398,10 +2532,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "authorization_code",
@@ -2439,6 +2576,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2447,6 +2585,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2477,7 +2617,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "verify_dynamic_link",
@@ -2522,6 +2663,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2530,6 +2672,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2547,7 +2691,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "idempotency_key",
@@ -2578,6 +2723,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2586,10 +2732,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "claim",
@@ -2627,6 +2776,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2635,6 +2785,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2661,7 +2813,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "slow_hash",
@@ -2699,6 +2852,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2707,10 +2861,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "encrypt",
@@ -2748,6 +2905,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2756,10 +2914,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "bytes_equal",
@@ -2797,6 +2958,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2805,6 +2967,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -2835,7 +2999,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "strings_equal",
@@ -2873,6 +3038,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2881,6 +3047,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": true,
       "attributes": [
         {
@@ -2917,7 +3085,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "verify_knowledge",
@@ -2962,6 +3131,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -2970,6 +3140,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -2987,7 +3159,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "verify_possession",
@@ -3025,6 +3198,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3033,6 +3207,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3050,7 +3226,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sca_factor_count",
@@ -3095,6 +3272,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3103,10 +3281,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "sca_satisfied",
@@ -3151,6 +3332,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3159,6 +3341,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3178,7 +3362,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "should_lock_account",
@@ -3216,6 +3401,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3224,10 +3410,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "evaluate_exemption",
@@ -3272,6 +3461,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3280,10 +3470,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "requires_sca",
@@ -3314,6 +3507,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3322,10 +3516,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "exemption_reason",
@@ -3356,6 +3553,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3364,10 +3562,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m9__rule_high_amount",
@@ -3405,6 +3606,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3413,6 +3615,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3428,7 +3632,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m9__rule_velocity",
@@ -3466,6 +3671,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3474,6 +3680,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3489,7 +3697,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m9__rule_sanctions",
@@ -3527,6 +3736,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3535,6 +3745,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3561,7 +3773,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "pan_fingerprint_blocked",
@@ -3599,6 +3812,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3607,6 +3821,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3624,7 +3840,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "_capa_m9__rule_structuring",
@@ -3662,6 +3879,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3670,6 +3888,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3685,7 +3905,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "assess",
@@ -3737,6 +3958,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3745,6 +3967,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3858,7 +4082,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "explain",
@@ -3889,6 +4114,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3897,6 +4123,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -3908,7 +4136,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "risk_to_decision",
@@ -3939,6 +4168,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -3947,6 +4177,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4017,7 +4249,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "mask_pan",
@@ -4048,6 +4281,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4056,6 +4290,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4099,7 +4335,8 @@
           "value": "\"**** **** **** ${...}\"",
           "pos": "39:12"
         }
-      ]
+      ],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "pan_fingerprint",
@@ -4137,6 +4374,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4145,6 +4383,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4162,7 +4402,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "storable_credential",
@@ -4200,6 +4441,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4208,6 +4450,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4244,7 +4488,8 @@
           "value": "slow_hash(secret, salt)",
           "pos": "67:12"
         }
-      ]
+      ],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "storable_ciphertext",
@@ -4282,6 +4527,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4290,6 +4536,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4326,7 +4574,8 @@
           "value": "encrypt(pan, data_key)",
           "pos": "75:12"
         }
-      ]
+      ],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "format_line",
@@ -4364,6 +4613,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4372,6 +4622,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4389,7 +4641,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "build_log",
@@ -4420,6 +4673,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4428,6 +4682,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4469,7 +4725,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "write_log",
@@ -4517,6 +4774,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4525,6 +4783,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4553,7 +4813,8 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "demo_now",
@@ -4576,6 +4837,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4584,10 +4846,13 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "audit_event",
@@ -4632,6 +4897,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4640,6 +4906,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -4651,7 +4919,8 @@
           "args_flow": []
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "process",
@@ -4783,6 +5052,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Stdio",
         "Unsafe"
       ],
@@ -4791,6 +5061,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [
         {
@@ -5306,7 +5578,8 @@
           "value": "pan_fp",
           "pos": "124:28"
         }
-      ]
+      ],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "print_decision",
@@ -5355,6 +5628,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Unsafe"
       ],
       "linear_obligations": {
@@ -5362,6 +5636,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -5396,7 +5672,8 @@
           "value": "d",
           "pos": "158:19"
         }
-      ]
+      ],
+      "unaudited_secret_sinks": []
     },
     {
       "name": "main",
@@ -5439,6 +5716,7 @@
         "Net",
         "Proc",
         "Random",
+        "Serve",
         "Unsafe"
       ],
       "linear_obligations": {
@@ -5446,6 +5724,8 @@
         "produces_linear": false
       },
       "has_unsafe": false,
+      "calls_foreign_component": false,
+      "foreign_component_calls": [],
       "constant_time": false,
       "attributes": [],
       "calls": [
@@ -5836,15 +6116,29 @@
           ]
         }
       ],
-      "declassifications": []
+      "declassifications": [],
+      "unaudited_secret_sinks": []
     }
   ],
+  "operator_declared_grants": {
+    "trust_level": "operator-declared",
+    "note": "Authority declared by the operator at build/run time (e.g. --preopen, --allow-host). DISTINCT from the compiler-derived, program-proven capability surface; the compiler could not derive these grants.",
+    "preopens": [],
+    "allow_hosts": []
+  },
+  "compiler_derived_path_arg_surface": {
+    "trust_level": "compiler-derived",
+    "note": "argv (env.args()) arguments the compiler PROVED reach an Fs / Net / Env sink, and whether read or write. A sound over-approximation (no reaching argument omitted; arg_index '*' when the concrete index is not statically determinate). Closures are covered SOUND BY CONSTRUCTION: a closure whose parameter reaches a sink is reported at '*' UNLESS the compiler proves it is applied only locally to non-argv values -- so a closure that escapes its frame (returned, passed to a helper, stored in an aggregate, or reached through a match/if arm or a name bound to one) fails closed, with no per-shape enumeration. Scope is EXHAUSTIVELY covered: the statement traversal descends into EVERY sub-scope that holds sub-statements -- if/while/for statement blocks, match-arm blocks, and lambda bodies, at any nesting depth -- so a binding or sink in any sub-block (including a match-arm block) is never skipped (pinned by a meta-test over the AST node inventory). RESIDUAL (the one honest gap, VALUE-FLOW only): a closure carried by a value the AST-level pass cannot statically tie back to a lambda -- re-extracted from a runtime container by key, or threaded through an opaque computed value -- may be under-reported. This does NOT grant authority -- a dynamic Fs/Net path still fail-closes in --wasi without --preopen; it is an auditable fact, distinct from operator_declared_grants.",
+    "arguments": []
+  },
   "summary": {
     "total_functions": 70,
     "functions_with_capabilities": 4,
     "functions_with_attributes": 8,
     "functions_crossing_unsafe": 0,
     "declassification_sites": 6,
-    "protocol_states": 0
+    "protocol_states": 0,
+    "foreign_components": 0,
+    "functions_calling_foreign_components": 0
   }
 }

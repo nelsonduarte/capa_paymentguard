@@ -1,0 +1,278 @@
+name: Release
+
+# Triggered by a signed v* tag push. Produces a source tarball,
+# generates a SLSA L2 build-provenance attestation through Sigstore
+# (keyless OIDC; published to the Rekor transparency log via
+# `actions/attest-build-provenance`), and attaches both to a new GitHub
+# release.
+#
+# To verify a downloaded tarball on the consumer side:
+#
+#   gh attestation verify <repo>-<tag>.tar.gz --owner <owner>
+#
+# That confirms the tarball was built by this repo's CI on a tag
+# matching the SHA recorded in the Rekor entry.
+#
+# THE RELEASE GUARDS RUN FIRST, and they are not defined here. They live
+# in the compiler repository as one reusable workflow, pinned below by
+# commit SHA, and `release` cannot start until they pass. They are
+# pinned by SHA and not by tag because a tag is mutable, and a guard you
+# cannot pin is a guard someone else can edit under you.
+#
+# WHAT THEY WOULD HAVE CAUGHT HERE, before this repository adopted them.
+# capa.toml declared `capa = ">=1.3.0"`, and unlike every sibling in this
+# fleet that floor was not false: 1.2.0 really does miss one of this
+# program's own @secret flows. It was still not the floor a consumer
+# needs. No released binary before 1.18.1 can run `capa test` at all,
+# because under PyInstaller `sys.executable` is the capa binary and it
+# rejects `-m`, and the consumer flow below ends in `capa test`. A
+# downloader obeying the old manifest would have fetched 1.3.0, compiled
+# all eight modules, and then been unable to run the one test that proves
+# the PAN blocklist works. The measurement is recorded in capa.toml and
+# the floor is now >=1.18.1.
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write       # create release + upload assets
+  id-token: write       # Sigstore OIDC for keyless signing
+  attestations: write   # publish SLSA provenance attestation
+
+env:
+  # THE PUBLISHER FINGERPRINT, ONCE. It is the value the tag signature is
+  # checked against and the fingerprint the release notes tell readers to
+  # trust. Two copies of one security constant is how they drift, and
+  # this pair drifts in the worst direction: rotate the key, update the
+  # check, forget the notes, and every release page then tells users to
+  # verify against a key the workflow itself no longer accepts.
+  PINNED_FPR: "6C1D222D491FB88031E041A536CFB426101AA24B"
+
+jobs:
+  # Guard 1 (tag matches the manifest version) and guard 2 (the artefact
+  # builds in a clean room, from the artefact's own bytes, with a
+  # RELEASED compiler) both run here, before anything is built, attested
+  # or published. A mismatch caught after publication is a mismatch that
+  # shipped, and a tag is not rewritable without destroying the
+  # provenance it anchors.
+  guards:
+    # The revision every repository in this fleet pins. Confirm a bump
+    # the same way it was confirmed here: check that the SHA is an
+    # ancestor of the compiler repository's main and that the blob of
+    # release-guards.yml at that SHA is the blob you audited, then read
+    # the diff. .github/guard-pins.sha256 records the digests of all five
+    # files this revision executes, and tests/test_guard_pins.sh refuses
+    # a record that does not describe the revision named here.
+    uses: nelsonduarte/capa-language/.github/workflows/release-guards.yml@2db00705e05b1774cf41eb58006e6533cfca4d55
+    permissions:
+      # The guards READ. They must never be able to publish, and above
+      # all must not hold `id-token: write`: that token signs
+      # attestations, and a guard has no business holding a credential
+      # that can sign anything. Stated explicitly rather than inherited,
+      # because the workflow-level grant above is write-heavy and a job
+      # that says nothing gets all of it.
+      contents: read
+    with:
+      # THE CONSUMER FLOW, exactly as the README tells a downloader to
+      # run it. `gpg --import publisher.asc` comes first because both
+      # entries in capa.toml carry a verify_key, so without the publisher
+      # key in the keyring `capa install` fails on the first one, and the
+      # clean room starts from the tarball with an empty keyring.
+      #
+      # EIGHT ENTRY POINTS, ALL EIGHT BOUNDED, and the ninth top-level
+      # module is a negative. `capa --check-capabilities <entry>` covers
+      # the IMPORT CLOSURE OF THAT ENTRY and nothing else: a module no
+      # checked entry imports is never opened, and the command exits 0
+      # having never seen it. Measured on 1.19.0 by planting a
+      # `Net`-taking function in audit.capa, the check failed from
+      # audit.capa and from main.capa and passed from the other six.
+      # main.capa's closure happens to contain all seven other compiling
+      # modules today, so one line would cover this repository by
+      # accident of one import graph; every module is named instead, and
+      # tests/test_release_wiring.sh reads the directory and fails if
+      # this list does not account for all of them.
+      #
+      # The order is bottom-up and was MEASURED, by planting a type error
+      # in one module at a time and compiling all nine: domain.capa and
+      # crypto_stub.capa import nothing, and everything else sits above
+      # them.
+      #
+      # THE NEGATIVE IS EVIDENCE, NOT ASSERTION. leaky_example.capa is
+      # the file the README points at for "watch the information-flow
+      # checker fire", it is a top-level module, and it is the one module
+      # here that must NOT compile. The line requires the command to fail
+      # FOR THE STATED REASON: `grep -q` over the combined output cannot
+      # pass unless that message appeared, so a renamed fixture, an
+      # unrelated syntax error, or an IFC analysis that quietly stops
+      # reporting the leak all fail the release.
+      consumer-commands: |
+        gpg --import publisher.asc
+        capa install
+        capa --check domain.capa
+        capa --check crypto_stub.capa
+        capa --check validate.capa
+        capa --check fraud.capa
+        capa --check audit.capa
+        capa --check auth.capa
+        capa --check mask.capa
+        capa --check main.capa
+        capa --check-capabilities domain.capa
+        capa --check-capabilities crypto_stub.capa
+        capa --check-capabilities validate.capa
+        capa --check-capabilities fraud.capa
+        capa --check-capabilities audit.capa
+        capa --check-capabilities auth.capa
+        capa --check-capabilities mask.capa
+        capa --check-capabilities main.capa
+        capa --check leaky_example.capa 2>&1 | grep -q "information-flow: a @secret value reaches Stdio.println"
+        capa test
+
+      # THE DIGESTS OF THE GUARD SCRIPTS. Pinning by commit SHA already
+      # makes the scripts content-addressed, so these buy little against
+      # the threat the pin covers. They are passed for a different
+      # property: the guard scripts are fetched at run time by a ref
+      # taken from a workflow context property, and that variable being
+      # populated with a plausible but WRONG revision is caught by
+      # nothing else. These digests are the one input in the whole flow
+      # written in THIS repository, so they are what would notice.
+      #
+      # They are the same bytes recorded in .github/guard-pins.sha256,
+      # which audits the pin ahead of time; this checks what the runner
+      # actually fetched. tests/test_release_wiring.sh fails if the two
+      # records ever disagree.
+      guard-digests: |
+        4bee86b2951bd33d3cb8bab6721b2abb30f0533a010dfe93d36ebb275497f1d4  .github/workflows/release-guards.yml
+        212b06bb4be0100267fcc98bb2be7f99f4860007f51ae222ed359cddb638eaa2  tools/capa_floor.sh
+        420290eb75a96f49aed937be40a3d63d1e2db3aba2de4a4a87c9282eb2a13b38  tools/check_tag_version.sh
+        537a7e902540efe4fe5c8f4ae72788b2f3595696b8a7a4bb0a54e19fe523ffcd  tools/clean_room_build.sh
+        4fa535d216ecbd647444c80e4cab978ff8e636e1d5edb437842ee561b9f17e0f  tools/verify_guard_digests.sh
+
+  release:
+    needs: guards
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Verify tag is GPG-signed by the pinned publisher key
+        run: |
+          set -euo pipefail
+
+          # Import the publisher key shipped in the repo.
+          gpg --import publisher.asc
+
+          # Fail unless the imported key carries the pinned primary-key
+          # fingerprint (importing publisher.asc alone proves nothing about
+          # identity, so anchor on the known publisher fingerprint).
+          if ! gpg --with-colons --fingerprint | grep -q "^fpr:::::::::${PINNED_FPR}:"; then
+            echo "ERROR: publisher.asc does not contain the pinned publisher fingerprint ${PINNED_FPR}" >&2
+            exit 1
+          fi
+
+          # Verify the tag and require the VALIDSIG primary-key fingerprint
+          # (the last field of the VALIDSIG status line) to equal the pinned
+          # fingerprint. This rejects signatures from any other key, even one
+          # the repo might ship.
+          RAW="$(git verify-tag --raw "${GITHUB_REF_NAME}" 2>&1)"
+          echo "${RAW}"
+          PRIMARY_FPR="$(printf '%s\n' "${RAW}" | awk '/^\[GNUPG:\] VALIDSIG/ { print $NF }')"
+          if [ "${PRIMARY_FPR}" != "${PINNED_FPR}" ]; then
+            echo "ERROR: tag ${GITHUB_REF_NAME} is not signed by the pinned publisher key" >&2
+            echo "       expected primary-key fingerprint ${PINNED_FPR}, got '${PRIMARY_FPR}'" >&2
+            exit 1
+          fi
+
+      # The tag/manifest comparison is guard 1, in the `guards` job above,
+      # from the compiler repository's single copy. This repository keeps
+      # NO local copy of it: a second copy of a security control in a
+      # fleet whose whole drift apparatus exists because copies drift is
+      # the defect, not the mitigation. The pin is audited by content in
+      # tests/test_guard_pins.sh.
+
+      - name: Build source tarball
+        id: tarball
+        run: |
+          NAME="${GITHUB_REPOSITORY##*/}-${GITHUB_REF_NAME}"
+          git archive --format=tar.gz --prefix="${NAME}/" HEAD > "${NAME}.tar.gz"
+          SHA256=$(sha256sum "${NAME}.tar.gz" | cut -d' ' -f1)
+          echo "name=${NAME}.tar.gz" >> "$GITHUB_OUTPUT"
+          echo "sha256=${SHA256}" >> "$GITHUB_OUTPUT"
+
+      # THE GAP THE GUARDS CANNOT CLOSE THEMSELVES, closed here. Guard 2
+      # must run before publication to be worth anything, so it verifies
+      # a tarball it rebuilt from the tag rather than the bytes this job
+      # is about to upload. It therefore proves the CONTENTS are sound
+      # and says nothing about whether these are those bytes. Only this
+      # job holds the artefact it is about to publish, so only this job
+      # can assert they are the same, and the reusable workflow exports
+      # `tarball-sha256` for exactly that.
+      - name: Confirm the tarball is the one the guards verified
+        env:
+          GUARD_SHA256: ${{ needs.guards.outputs.tarball-sha256 }}
+          BUILT_SHA256: ${{ steps.tarball.outputs.sha256 }}
+        run: |
+          set -euo pipefail
+          # Fail closed on an absent digest as well as a differing one: an
+          # empty value means the clean room did not report, and treating
+          # "no answer" as "same answer" is how a guard passes for the
+          # wrong reason.
+          if [ -z "${GUARD_SHA256}" ]; then
+            echo "ERROR: the guards reported no tarball digest; refusing to publish unverified bytes" >&2
+            exit 1
+          fi
+          if [ "${GUARD_SHA256}" != "${BUILT_SHA256}" ]; then
+            echo "ERROR: the tarball about to be published is not the one the guards verified" >&2
+            echo "       guards verified ${GUARD_SHA256}" >&2
+            echo "       this job built  ${BUILT_SHA256}" >&2
+            exit 1
+          fi
+          echo "OK: publishing exactly the bytes the clean room built (${BUILT_SHA256})"
+
+      - name: Generate SLSA L2 provenance
+        uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32  # v4.1.0
+        with:
+          subject-path: ${{ steps.tarball.outputs.name }}
+
+      - name: Publish release
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda  # v3.0.0
+        with:
+          files: ${{ steps.tarball.outputs.name }}
+          generate_release_notes: false
+          # NOTE FOR ANYONE EDITING THE BODY BELOW. It is reused verbatim
+          # for EVERY future release, so nothing in it may assert a fact
+          # about one particular release. Write only what is true of every
+          # release, or interpolate it from the tag.
+          body: |
+            `${{ github.event.repository.name }}` ${{ github.ref_name }}.
+
+            Every release of this repository is published from a GPG-signed
+            tag and carries a SLSA L2 build-provenance attestation. Both
+            are verifiable below, and neither claim depends on which
+            release this is.
+
+            **Tarball:** `${{ steps.tarball.outputs.name }}`
+            **SHA-256:** `${{ steps.tarball.outputs.sha256 }}`
+
+            ## Verification
+
+            Tag signature (publisher identity):
+
+            ```
+            gpg --import publisher.asc
+            git verify-tag ${{ github.ref_name }}
+            ```
+
+            SLSA L2 build provenance (CI-attested, published to Sigstore Rekor):
+
+            ```
+            gh attestation verify ${{ steps.tarball.outputs.name }} \
+                --owner ${{ github.repository_owner }}
+            ```
+
+            Publisher GPG fingerprint:
+            `${{ env.PINNED_FPR }}`

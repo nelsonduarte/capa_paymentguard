@@ -36,9 +36,9 @@ fun audit_event(action: String, source: String, detail: String) -> AuditEvent
 // cardholder data is in the secret domain throughout; the only data
 // that ever reaches the (public) audit trail is masked via mask.capa.
 //
-// @strict_ifc makes every @secret-reaches-public-sink in this function
-// a hard error, not a warning, and also catches implicit (control-flow)
-// leaks. The PAN-blocklist step below holds a @secret PAN fingerprint,
+// @strict_ifc makes a detected @secret-to-public-sink flow in this function
+// a hard error, not a warning, and also checks implicit (control-flow)
+// flows. The PAN-blocklist step below holds a @secret PAN fingerprint,
 // compares it against the public watchlist, and on a hit writes a fraud
 // alert via Fs.write. Both the match boolean and the matched fingerprint
 // are declassified there, with PCI reasons. Those declassifies are

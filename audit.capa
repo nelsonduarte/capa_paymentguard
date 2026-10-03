@@ -49,9 +49,9 @@ pub fun build_log(events: List<AuditEvent>) -> List<String>
         prev = hmac_sha256_hex_utf8("audit-chain-key", line)
     return lines
 
-// Persist the log. The content is public by construction (every
-// AuditEvent field is public); if any secret reached it, this
-// ``Fs.write`` would be an information-flow violation.
+// Persist the log. The content is built from public fields (every
+// AuditEvent field is public); a secret the analysis detected reaching
+// this ``Fs.write`` would be reported as an information-flow finding.
 pub fun write_log(fs: Fs, path: String, events: List<AuditEvent>) -> Result<Unit, IoError>
     let lines = build_log(events)
     var content = ""

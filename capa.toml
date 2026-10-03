@@ -3,14 +3,14 @@
 # A showcase of Capa's capability discipline + information-flow
 # control on a payment-transaction security core.
 #
-# One dependency: capa_hash, a pure, zero-capabilities, SLSA-verified
+# One dependency: capa_hash, a zero-capabilities, SLSA-verified
 # library providing the real HMAC-SHA256, SHA-256, and constant-time
 # comparison used for integrity and authentication here. Run
 # `capa install` once to vendor and verify it (GPG tag signature +
 # SLSA provenance) before `capa --check`. The dependency does NOT
-# widen the capability surface: capa_hash holds no authority at all,
-# so least-privilege still holds, and the dependency is itself
-# machine-verifiable. The remaining crypto (the credential KDF and
+# widen the capability surface: capa_hash holds no capability at all,
+# so least-privilege still holds, and the dependency's release is
+# signature- and provenance-checked. The remaining crypto (the credential KDF and
 # the at-rest cipher) stays an honest stub in crypto_stub.capa.
 
 [package]
@@ -35,7 +35,7 @@ version = "0.2.0"
 #   capa 1.3.0   5 warnings   main.capa:163 reported
 #   capa 1.19.0  5 warnings   the same
 #
-# So >=1.3.0 is a bound on the GUARANTEE: below it, one of this
+# So >=1.3.0 is a bound on the CHECK: below it, one of this
 # program's own declassify bridges stops being load-bearing and the
 # laundering is silent. What it is not is a bound on the BUILD. 1.1.0
 # and 1.2.0 install the dependency and compile all eight compiling

@@ -1,9 +1,9 @@
 // fraud.capa
 //
 // Deterministic, explainable fraud / AML risk scoring. Pure: this
-// module takes NO capabilities at all. That is the point: the SBOM
-// proves the fraud engine cannot read the network, the filesystem,
-// the environment, or the clock. It sees only the data it is handed
+// module takes NO capabilities at all. That is the point: its manifest
+// entries declare none and list Net, Fs, Env and Clock among the
+// excluded capabilities. It sees only the data it is handed
 // and returns a verdict plus the reasons behind it (regulatory
 // requirement: risk decisions must be explainable).
 //

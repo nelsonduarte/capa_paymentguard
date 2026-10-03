@@ -2,14 +2,14 @@
 # Regenerate the CRA conformity pack for capa_paymentguard.
 #
 # Every artifact under conformity/ is emitted by the Capa compiler from
-# main.capa, so the pack is byte-for-byte reproducible: an assessor can
-# rerun this script and diff its output against what ships in the repo
-# and get ZERO differences, not just "stable modulo timestamps".
+# main.capa. The compiler's tests pin byte-identical output for repeated
+# runs of the same program; rerunning this script and diffing is a check
+# to run, not a guarantee.
 #
 # RUN IT WITH THE COMPILER capa.toml DECLARES, currently 1.18.1. Every
 # artefact carries a `capa_version` field and later releases add fields
-# the emitters did not have before, so the pack is byte-for-byte
-# reproducible AT A COMPILER VERSION: regenerating on 1.19.0 moves all
+# the emitters did not have before, so the output differs between
+# COMPILER VERSIONS: regenerating on 1.19.0 moves all
 # five files. If you bump the floor, regenerate and commit the pack in
 # the same commit.
 #

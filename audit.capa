@@ -9,13 +9,13 @@
 //
 //  2. CONFIDENTIALITY (no secrets in the clear): an ``AuditEvent``
 //     carries only public fields. Because the log is written through
-//     ``Fs.write``, a @secret value reaching the log content is an
-//     information-flow violation the compiler reports. The ONLY way
-//     to put cardholder data in a log line is to mask it first (see
+//     ``Fs.write``, a @secret value the analysis detects reaching the
+//     log content is a violation the compiler reports; the sanctioned
+//     way to put cardholder data in a log line is to mask it first (see
 //     mask.capa), which is exactly OWASP's logging guidance.
 //
 // Capabilities: this module declares ``Fs`` and nothing else. The
-// SBOM proves it cannot reach the network.
+// manifest lists Net among the excluded capabilities of each function.
 
 import domain
 import capa_hash.hmac

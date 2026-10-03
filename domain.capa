@@ -7,9 +7,9 @@
 // The information-flow story lives in the type annotations here: the
 // fields that hold cardholder data and credentials are marked
 // ``@secret``. From that single annotation the compiler propagates a
-// security label through every value derived from them, and proves
-// (see audit.capa / fraud.capa) that they cannot reach a public sink
-// without passing through an audited ``declassify`` (see mask.capa).
+// security label through the values derived from them that it tracks,
+// and reports a flow it detects from them to a public sink that does
+// not pass through an audited ``declassify`` (see mask.capa).
 
 // =========================================================
 // Cardholder data (PCI DSS scope)

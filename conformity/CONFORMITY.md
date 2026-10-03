@@ -130,8 +130,8 @@ Read straight off `manifest.json`:
   the sink where the value actually leaves the program.
 
 - **Least privilege, checked by the compiler**: the fraud / AML engine
-  (`assess`, `risk_to_decision`) declares **no capabilities**, its
-  capability set is provable from its types, and the manifest lists
+  (`assess`, `risk_to_decision`) declares **no capabilities**, and the
+  manifest lists
   `Net` (and `Fs`, `Env`, `Clock`, `Db`, `Proc`) in its
   `provably_excluded_capabilities`.
 
@@ -151,7 +151,7 @@ in the compiler repo for the full article-by-article treatment.
 |---|---|---|
 | Annex I Part I (2)(b) | secure-by-default configuration | Every function defaults to zero capabilities; `manifest.json` shows each function's declared set is exactly what its signature carries. |
 | Annex I Part I (2)(d) | protection from unauthorised access | No constructor or literal produces a built-in capability, and no global or import yields one; `manifest.json` `declared_capabilities` per function is the access-control surface. |
-| Annex I Part I (2)(e) | confidentiality of processed data | IFC: card data is `@secret`; the compiler checks every path it analyses to a public sink, and the build fails (`@strict_ifc` on `process`) if it detects one that is not masked. `manifest.json` `declassifications` enumerates the 6 sanctioned disclosures with reasons. |
+| Annex I Part I (2)(e) | confidentiality of processed data | IFC: card data is `@secret`; a flow the analysis detects to a public sink, not masked, is a build error in `process` (`@strict_ifc`) and a warning elsewhere. `manifest.json` `declassifications` enumerates the 6 sanctioned disclosures with reasons. |
 | Annex I Part I (2)(f) | integrity against manipulation | Each function's `transitively_reachable_capabilities` is derived by the compiler from its signature and body; an SBOM diff (`sbom.cyclonedx.json`) shows any change in that derived set, including a dependency function that gains a capability in its signature. |
 | Annex I Part I (2)(g) | data minimisation | Least authority is the language default; IFC additionally checks where secret data flows and reports a flow to a sink that it detects. |
 | Annex I Part I (2)(j) | limit attack surfaces / external interfaces | The declared capability set per function *is* the interface contract; `manifest.json` + the WIT spec under `capa --wasm --component` are the machine-readable surface. |

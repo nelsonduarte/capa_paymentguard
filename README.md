@@ -8,10 +8,10 @@ PCI DSS v4.0.1, PSD2 / SCA, ISO/IEC 27001, RGPD and OWASP.
 It is built to demonstrate the one property no mainstream language gives
 you for free:
 
-> **the compiler checks every path it analyses from a card number to a
-> log line or a network call, the build fails (`@strict_ifc` on
-> `process`) if it detects one that is not masked, and every sanctioned
-> disclosure is recorded, with its reason, in the manifest.**
+> **a flow the analysis detects from a card number to a log line or a
+> network call, not masked, is a build error in `process` (`@strict_ifc`)
+> and a warning elsewhere, and every sanctioned disclosure is recorded,
+> with its reason, in the manifest.**
 
 ## What this is, and what it is NOT
 
@@ -110,7 +110,8 @@ the honesty section below before drawing any other conclusion.
   the container, so a later read keeps the label). What it does NOT do:
   (a) label a callee's parameter implicitly: inside a callee a parameter
   is `@secret` only when annotated, and a secret argument that reaches a
-  sink through a callee is reported at the call site instead; and (b)
+  sink through a callee is reported at the call site when the analysis
+  detects the flow; and (b)
   track individual elements of a list, tuple, or map, where the
   granularity is the whole aggregate (a struct field declared `@secret`
   keeps its label per field). And it is a check, not a proof: an

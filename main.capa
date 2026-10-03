@@ -6,8 +6,8 @@
 // together and runs one demo scenario end to end.
 //
 // Capabilities used here: Stdio (console output) and Fs (the audit
-// log). Note what main does NOT need and never acquires: Net, Env,
-// Proc, Db, Clock, Random, Unsafe. The SBOM proves it.
+// log). main's manifest entry declares only these two and lists Net,
+// Env, Proc, Db, Clock, Random and Unsafe among its excluded capabilities.
 
 import domain
 import validate
